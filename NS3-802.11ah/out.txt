@@ -1,0 +1,23 @@
+Waf: Entering directory `/home/lip/Bureau/Methodology-IoT/NS3-802.11ah/build'
+[ 843/1772] Compiling scratch/rca/Configuration.cc
+[ 845/1772] Compiling scratch/rca/NodeStatistics.cc
+[ 847/1772] Compiling scratch/rca/SimulationEventManager.cc
+[ 858/1772] Compiling scratch/rca/s1g-rca.cc
+[1761/1772] Linking build/scratch/rca/rca
+Waf: Leaving directory `/home/lip/Bureau/Methodology-IoT/NS3-802.11ah/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (11.526s)
+Nsta = 1 1
+Populating routing tables...
+Populating ARP cache...
+Arp Cache: Adding the pair (00:00:00:00:00:01,192.168.0.1)
+Arp Cache: Adding the pair (00:00:00:00:00:02,192.168.0.2)
+Configuring trace sinks for nodes...
+Configuring STA Node trace sources...
+Hooking up trace sources for STA 0
+Node 0 is associated and has aid 1
+All 1 stations associated at 1510800, configuring clients & server
+Total energy: 0.0310021
+Battery lifetime: 838.654
+Throughput: 0.0390625
+Success rate: 100
