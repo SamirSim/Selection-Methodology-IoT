@@ -56,7 +56,7 @@ int main (int argc, char *argv[]) {
   // Number of gatewyas
   int nGW = 1; 
   // Modulation and Coding Scheme
-  int MCS = -1;  // If -1 then IdealWifiManager
+  int MCS = 10;  // If 10 then IdealWifiManager
   // TxPower
   int txPower = 9; 
   // Traffic direction
@@ -253,7 +253,7 @@ int main (int argc, char *argv[]) {
   WifiHelper wifi;
   wifi.SetStandard (WIFI_STANDARD_80211ac);
 
-  if (MCS == -1) {
+  if (MCS == 10) {
     wifi.SetRemoteStationManager("ns3::IdealWifiManager");
   }
   else {

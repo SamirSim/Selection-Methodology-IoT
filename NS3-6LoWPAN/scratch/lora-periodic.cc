@@ -16,6 +16,7 @@
 #include "ns3/lora-helper.h"
 #include "ns3/mobility-helper.h"
 #include "ns3/node-container.h"
+#include "ns3/mobility-module.h"
 #include "ns3/position-allocator.h"
 #include "ns3/periodic-sender-helper.h"
 #include "ns3/command-line.h"
@@ -32,29 +33,41 @@
 using namespace ns3;
 using namespace lorawan;
 
+void PrintPositions (NodeContainer loraNodes)
+{
+  
+    Ptr<RandomWalk2dMobilityModel> mob = loraNodes.Get(1)->GetObject<RandomWalk2dMobilityModel>();
+    Vector pos = mob->GetPosition ();
+    std::cout << "POS: x=" << pos.x << ", y=" << pos.y << ", z=" << pos.z << "," << Simulator::Now ().GetSeconds ()<< std::endl;
+    //mob->SetVelocity (Vector(1,0,0));
+    
+    Simulator::Schedule(Seconds(1), &PrintPositions, loraNodes);
+}
+
 NS_LOG_COMPONENT_DEFINE ("lora-periodic");
 
 int
 main (int argc, char *argv[]) {
   /*/ Defining input parameters /*/
   double simulationTime = 600;
-  int nSta = 5;
+  int nSta = 50;
   int nGateways = 1;
   double SF=0; // If SF=0, then the SF is set automatically
   uint8_t codingRate=1;
   int crc = 0;
   double payloadSize = 50;
   int period = 60; //One packet per hour
-  double distance = 10000;
+  double distance = 7000;
   std::string trafficType = "Unconfirmed";
 
   bool energyRatio = true;
   bool successRate = false;
   bool batteryLife = false;
+  bool mobileNodes = true;
 
   int channelWidth = 80; // BW Channel Width in MHz
   std::string propDelay = "ConstantSpeedPropagationDelayModel";
-  std::string propLoss = "OkumuraHataPropagationLossModel";
+  std::string propLoss = "LogDistancePropagationLossModel";
 
   CommandLine cmd;
   cmd.AddValue ("nSta", "Number of end devices to include in the simulation", nSta);
@@ -62,6 +75,7 @@ main (int argc, char *argv[]) {
   cmd.AddValue ("distance", "The distance of the area to simulate", distance);
   cmd.AddValue ("SF", "Fixed spreading factor", SF);
   cmd.AddValue ("codingRate", "Coding Rate", codingRate);
+  cmd.AddValue ("mobileNodes", "Mobile nodes or not", mobileNodes);
   cmd.AddValue ("crc", "Cyclic Redundancy Check", crc);
   cmd.AddValue ("trafficType", "Confirmed or unconfirmed traffic", trafficType);
   cmd.AddValue ("simulationTime", "The time for which to simulate", simulationTime);
@@ -103,9 +117,27 @@ main (int argc, char *argv[]) {
   mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
   */
 
-  mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
+  if (mobileNodes) {
+    mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
+                                    "MinX", DoubleValue (0.0),
+                                    "MinY", DoubleValue (0.0),
+                                    "DeltaX", DoubleValue (10.0),
+                                    "DeltaY", DoubleValue (10.0),
+                                    "GridWidth", UintegerValue (3),
+                                    "LayoutType", StringValue ("RowFirst"));
+
+      //mobility.SetPositionAllocator (position);
+      mobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
+                                "Mode", StringValue ("Time"),
+                                "Time", StringValue ("2s"),
+                                "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=20.0]"),
+                                "Bounds", RectangleValue (Rectangle (-distance/2, distance/2, -distance/2, distance/2)));
+  } 
+  else {
+    mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
-  	mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  }
 
   Ptr<LoraChannel> channel;
   Ptr<PropagationDelayModel> delay = CreateObject<ConstantSpeedPropagationDelayModel> ();
@@ -141,6 +173,8 @@ main (int argc, char *argv[]) {
 
   // Assign a mobility model to each node
   mobility.Install (endDevices);
+
+  PrintPositions (endDevices);
 
   // Create the LoraNetDevices of the end devices
   phyHelper.SetDeviceType (LoraPhyHelper::ED);

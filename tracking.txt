@@ -1,0 +1,1 @@
+{'distance': 10, 'nb_devices': 10, 'traffic_direction': 'upstream', 'packet_size': 100, 'packet_period': 1, 'battery_capacity': 2400, 'mobile_nodes': 0, 'battery_voltage': 3, 'simulation_time': 10, 'propagation_loss_model': 'LogDistancePropagationLossModel'}

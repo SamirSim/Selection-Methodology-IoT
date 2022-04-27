@@ -82,10 +82,10 @@ uint32_t GetAssocNum() {
 void PrintPositions (NodeContainer wifiStaNode)
 {
   
-    Ptr<ConstantVelocityMobilityModel> mob = wifiStaNode.Get(0)->GetObject<ConstantVelocityMobilityModel>();
+    Ptr<RandomWalk2dMobilityModel> mob = wifiStaNode.Get(1)->GetObject<RandomWalk2dMobilityModel>();
     Vector pos = mob->GetPosition ();
-    //std::cout << "POS: x=" << pos.x << ", y=" << pos.y << ", z=" << pos.z << "," << Simulator::Now ().GetSeconds ()<< std::endl;
-    mob->SetVelocity (Vector(1,0,0));
+    std::cout << "POS: x=" << pos.x << ", y=" << pos.y << ", z=" << pos.z << "," << Simulator::Now ().GetSeconds ()<< std::endl;
+    //mob->SetVelocity (Vector(1,0,0));
     
     Simulator::Schedule(Seconds(1), &PrintPositions, wifiStaNode);
 }
@@ -1151,7 +1151,7 @@ void configureUDPEchoClients() {
 
 		double random = m_rv->GetValue(0, config.trafficInterval);
 
-		std::cout << random << std::endl;
+		//std::cout << random << std::endl;
 
 		clientApp.Start(Seconds(1 + random));
 		clientApp.Stop(Seconds(config.trafficInterval + config.simulationTime));
@@ -1473,7 +1473,7 @@ int main(int argc, char *argv[]) {
 	Config::ConnectWithoutContext(oss.str() + "RawSlot", MakeCallback(&RawSlotTrace));
 
 	// mobility.
-    /*
+    /* 
 	MobilityHelper mobility;
 	double xpos = std::stoi(config.rho, nullptr, 0);
 	double ypos = xpos;
@@ -1485,20 +1485,35 @@ int main(int argc, char *argv[]) {
     */
     
     MobilityHelper mobility;
-	/*
-    Ptr<ListPositionAllocator> position = CreateObject<ListPositionAllocator> ();
-    position->Add (Vector (-500, 0, 0));
-    mobility.SetPositionAllocator (position);
-    mobility.SetMobilityModel("ns3::ConstantVelocityMobilityModel");
-    mobility.Install(wifiStaNode);
-    PrintPositions (wifiStaNode);
-	*/
+	
+   // Ptr<ListPositionAllocator> position = CreateObject<ListPositionAllocator> ();
+    //position->Add (Vector (0, 0, 0));
+	if (config.mobileNodes) {
+		mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
+										"MinX", DoubleValue (0.0),
+										"MinY", DoubleValue (0.0),
+										"DeltaX", DoubleValue (10.0),
+										"DeltaY", DoubleValue (10.0),
+										"GridWidth", UintegerValue (3),
+										"LayoutType", StringValue ("RowFirst"));
 
-	mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (config.rho),
+		//mobility.SetPositionAllocator (position);
+		mobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
+									"Mode", StringValue ("Time"),
+									"Time", StringValue ("2s"),
+									"Speed", StringValue ("ns3::ConstantRandomVariable[Constant=20.0]"),
+									"Bounds", RectangleValue (Rectangle (-config.rho, config.rho, -config.rho, config.rho)));
+		mobility.Install(wifiStaNode);
+		mobility.AssignStreams (wifiStaNode, 0);
+		PrintPositions (wifiStaNode);
+	}
+	else {
+		mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (config.rho),
                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
-  	mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-	mobility.Install(wifiStaNode);
-
+		mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+		mobility.Install(wifiStaNode);
+	}
+	
    /*
 	MobilityHelper mobilityAp;
 	Ptr<ListPositionAllocator> positionAlloc = CreateObject<

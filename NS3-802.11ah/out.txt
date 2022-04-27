@@ -1,23 +1,71 @@
-Waf: Entering directory `/home/lip/Bureau/Methodology-IoT/NS3-802.11ah/build'
-[ 843/1772] Compiling scratch/rca/Configuration.cc
-[ 845/1772] Compiling scratch/rca/NodeStatistics.cc
-[ 847/1772] Compiling scratch/rca/SimulationEventManager.cc
-[ 858/1772] Compiling scratch/rca/s1g-rca.cc
+Waf: Entering directory `/home/lip/Bureau/Selection-Methodology-IoT/NS3-802.11ah/build'
+[ 857/1772] Compiling scratch/rca/s1g-rca.cc
 [1761/1772] Linking build/scratch/rca/rca
-Waf: Leaving directory `/home/lip/Bureau/Methodology-IoT/NS3-802.11ah/build'
+Waf: Leaving directory `/home/lip/Bureau/Selection-Methodology-IoT/NS3-802.11ah/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (11.526s)
-Nsta = 1 1
+'build' finished successfully (6.880s)
+Nsta = 10 1
+POS: x=6, y=1, z=0,0
 Populating routing tables...
 Populating ARP cache...
 Arp Cache: Adding the pair (00:00:00:00:00:01,192.168.0.1)
 Arp Cache: Adding the pair (00:00:00:00:00:02,192.168.0.2)
+Arp Cache: Adding the pair (00:00:00:00:00:03,192.168.0.3)
+Arp Cache: Adding the pair (00:00:00:00:00:04,192.168.0.4)
+Arp Cache: Adding the pair (00:00:00:00:00:05,192.168.0.5)
+Arp Cache: Adding the pair (00:00:00:00:00:06,192.168.0.6)
+Arp Cache: Adding the pair (00:00:00:00:00:07,192.168.0.7)
+Arp Cache: Adding the pair (00:00:00:00:00:08,192.168.0.8)
+Arp Cache: Adding the pair (00:00:00:00:00:09,192.168.0.9)
+Arp Cache: Adding the pair (00:00:00:00:00:0a,192.168.0.10)
+Arp Cache: Adding the pair (00:00:00:00:00:0b,192.168.0.11)
 Configuring trace sinks for nodes...
 Configuring STA Node trace sources...
 Hooking up trace sources for STA 0
+Hooking up trace sources for STA 1
+Hooking up trace sources for STA 2
+Hooking up trace sources for STA 3
+Hooking up trace sources for STA 4
+Hooking up trace sources for STA 5
+Hooking up trace sources for STA 6
+Hooking up trace sources for STA 7
+Hooking up trace sources for STA 8
+Hooking up trace sources for STA 9
+Node 2 is associated and has aid 3
+Node 9 is associated and has aid 10
+Node 1 is associated and has aid 2
+Node 6 is associated and has aid 7
+Node 4 is associated and has aid 5
+POS: x=6.84389, y=0.463477, z=0,1
+Node 3 is associated and has aid 4
 Node 0 is associated and has aid 1
-All 1 stations associated at 1510800, configuring clients & server
-Total energy: 0.0310021
-Battery lifetime: 838.654
-Throughput: 0.0390625
-Success rate: 100
+Node 5 is associated and has aid 6
+POS: x=7.68777, y=0.0730467, z=0,2
+Node 8 is associated and has aid 9
+Node 7 is associated and has aid 8
+All 10 stations associated at 2018458, configuring clients & server
+856.099
+457.334
+438.42
+52.1734
+226.124
+988.672
+437.988
+544.375
+134.922
+378.22
+POS: x=6.68786, y=0.0861946, z=0,3
+POS: x=5.68794, y=0.0993425, z=0,4
+POS: x=6.61113, y=0.483689, z=0,5
+POS: x=7.53432, y=0.868036, z=0,6
+POS: x=6.69347, y=0.326764, z=0,7
+POS: x=5.85263, y=0.214507, z=0,8
+POS: x=5.19426, y=0.538192, z=0,9
+POS: x=4.5359, y=1.29089, z=0,10
+POS: x=3.72417, y=1.87493, z=0,11
+POS: x=2.91245, y=2.45897, z=0,12
+POS: x=3.44835, y=1.61469, z=0,13
+Total energy: 0.00739222
+Battery lifetime: 3517.21
+Throughput: 6.92291e-310
+Success rate: -nan

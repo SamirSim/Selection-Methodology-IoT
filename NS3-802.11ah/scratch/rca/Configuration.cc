@@ -15,6 +15,7 @@ Configuration::Configuration(int argc, char *argv[]) {
     cmd.AddValue ("trafficInterval", "Message period", trafficInterval);
     cmd.AddValue ("Nsta", "number of total stations", Nsta);
     cmd.AddValue ("nGW", "number of gateways", nGW);
+    cmd.AddValue ("mobileNodes", "Mobile nodes", mobileNodes);
     cmd.AddValue ("batteryCapacity", "Battery Capacity in Ah", batteryCapacity);
     cmd.AddValue ("voltage", "Battery Voltage in V", voltage);
     cmd.AddValue ("propLoss", "Loss Propagation Model", propLoss);

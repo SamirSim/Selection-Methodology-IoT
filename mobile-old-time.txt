@@ -1,0 +1,19 @@
+{'distance': 500, 'nb_devices': 20, 'traffic_direction': 'upstream', 'packet_size': 20, 'packet_period': 300, 'battery_capacity': 2400, 'mobile_nodes': 1, 'battery_voltage': 3} LogDistancePropagationLossModel
+pruning applied on  WiFi
+pruning applied on  6LoWPAN
+HaLow-GW1 [8.83333, 436.949, 97.55, 1300] 0.33
+HaLow-GW2 [33.0, 433.942, 79.18, 2300] 0.26
+HaLow-GW3 [81.3889, 431.739, 76.61999999999999, 3300] 0.37
+LoRaWAN-GW1 [100.0, 4539.88, 66.81599999999933, 1100] 1.00
+LoRaWAN-GW2 [100.0, 4540.03, 66.81600000000154, 2100] 0.81
+LoRaWAN-GW3 [100.0, 4540.45, 66.81600000000066, 3100] 0.67
+Selection: The best technology is:  LoRaWAN-GW1
+         group  Packet Delivery \n (%)  ...  Packet Latency \n (ms)  Cost \n ($)
+0    HaLow-GW1                0.045439  ...                0.521060     0.225959
+1    HaLow-GW2                0.169753  ...                0.422938     0.399773
+2    HaLow-GW3                0.418668  ...                0.409263     0.573588
+3  LoRaWAN-GW1                0.514405  ...                0.356896     0.191196
+4  LoRaWAN-GW2                0.514405  ...                0.356896     0.365010
+5  LoRaWAN-GW3                0.514405  ...                0.356896     0.538825
+
+[6 rows x 5 columns]

@@ -60,7 +60,7 @@ int stat_connect(const char* hostname, const char* port) {
 	}
 
 	if (p == NULL) {
-		fprintf(stderr, "client: failed to connect: \n");
+		//fprintf(stderr, "client: failed to connect: \n");
 		return -1;
 	}
 

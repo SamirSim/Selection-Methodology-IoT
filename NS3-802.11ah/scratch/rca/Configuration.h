@@ -69,10 +69,11 @@ struct Configuration {
 	string datarate = "1";
 	string bandWidth = "2";
 	double rho=20; //50
+	bool mobileNodes;
 	int sgi=1;
-	string mcs="5"; 
+	string mcs="0"; 
 	int agregation = 0;
-	string propLoss="OkumuraHataPropagationLossModel";
+	string propLoss="LogDistancePropagationLossModel";
 
 	double totaltraffic = 2;
 
