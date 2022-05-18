@@ -56,7 +56,7 @@ MobilityBuildingInfo::DoInitialize ()
 MobilityBuildingInfo::MobilityBuildingInfo ()
 {
   NS_LOG_FUNCTION (this);
-  m_indoor = false;
+  m_indoor = true;
   m_nFloor = 1;
   m_roomX = 1;
   m_roomY = 1;

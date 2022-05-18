@@ -13,6 +13,7 @@
 #include "ns3/constant-position-mobility-model.h"
 #include "ns3/okumura-hata-propagation-loss-model.h"
 #include "ns3/cost231-propagation-loss-model.h"
+#include "ns3/hybrid-buildings-propagation-loss-model.h"
 #include "ns3/lora-helper.h"
 #include "ns3/mobility-helper.h"
 #include "ns3/node-container.h"
@@ -25,10 +26,14 @@
 #include "ns3/file-helper.h"
 #include "ns3/names.h"
 #include "ns3/core-module.h"
+#include "ns3/buildings-helper.h"
+#include "ns3/building.h"
 #include <algorithm>
 #include <ctime>
 #include <iomanip>
 #include <fstream>
+#include <iostream>
+#include "ns3/string.h"
 
 using namespace ns3;
 using namespace lorawan;
@@ -49,15 +54,15 @@ NS_LOG_COMPONENT_DEFINE ("lora-periodic");
 int
 main (int argc, char *argv[]) {
   /*/ Defining input parameters /*/
-  double simulationTime = 600;
-  int nSta = 50;
+  double simulationTime = 100;
+  int nSta = 400;
   int nGateways = 1;
   double SF=0; // If SF=0, then the SF is set automatically
   uint8_t codingRate=1;
   int crc = 0;
-  double payloadSize = 50;
+  double payloadSize = 10;
   int period = 60; //One packet per hour
-  double distance = 7000;
+  double distance = 500;
   std::string trafficType = "Unconfirmed";
 
   bool energyRatio = true;
@@ -67,7 +72,7 @@ main (int argc, char *argv[]) {
 
   int channelWidth = 80; // BW Channel Width in MHz
   std::string propDelay = "ConstantSpeedPropagationDelayModel";
-  std::string propLoss = "LogDistancePropagationLossModel";
+  std::string radioEnvironment = "indoor";
 
   CommandLine cmd;
   cmd.AddValue ("nSta", "Number of end devices to include in the simulation", nSta);
@@ -84,7 +89,7 @@ main (int argc, char *argv[]) {
   cmd.AddValue ("channelWidth", "Channel Width in MHz", channelWidth);
   //cmd.AddValue ("topologyFile", "Topology file name", topologyFile);
   cmd.AddValue ("propDelay", "Delay Propagation Model", propDelay);
-  cmd.AddValue ("propLoss", "Distance Propagation Model", propLoss);
+  cmd.AddValue ("radioEnvironment", "Distance Propagation Model", radioEnvironment);
   cmd.AddValue ("energyRatio", "Energy ratio in Joules/Byte", energyRatio);
   cmd.AddValue ("successRate", "Percentage of successful packets", successRate);
   cmd.AddValue("batteryLife", "Percentage of successful packets", batteryLife);
@@ -97,9 +102,9 @@ main (int argc, char *argv[]) {
   if (energyRatio) {
     LogComponentEnable ("lora-periodic", LOG_LEVEL_ALL);
     LogComponentEnable ("LoraRadioEnergyModel", LOG_LEVEL_ALL);
-    LogComponentEnable("EndDeviceLorawanMac", LOG_LEVEL_ALL);
-    LogComponentEnable("GatewayLorawanMac", LOG_LEVEL_ALL);
-    LogComponentEnable("LoraPhy", LOG_LEVEL_ALL);
+    LogComponentEnable ("EndDeviceLorawanMac", LOG_LEVEL_ALL);
+    LogComponentEnable ("GatewayLorawanMac", LOG_LEVEL_ALL);
+    LogComponentEnable ("LoraPhy", LOG_LEVEL_ALL);
   }
 
   LogComponentEnableAll (LOG_PREFIX_FUNC);
@@ -118,20 +123,24 @@ main (int argc, char *argv[]) {
   */
 
   if (mobileNodes) {
+    /*
     mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
                                     "MinX", DoubleValue (0.0),
                                     "MinY", DoubleValue (0.0),
-                                    "DeltaX", DoubleValue (10.0),
-                                    "DeltaY", DoubleValue (10.0),
+                                    "DeltaX", DoubleValue (1.0),
+                                    "DeltaY", DoubleValue (1.0),
                                     "GridWidth", UintegerValue (3),
                                     "LayoutType", StringValue ("RowFirst"));
+      */
+     mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
+                                 "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
 
       //mobility.SetPositionAllocator (position);
       mobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                                 "Mode", StringValue ("Time"),
-                                "Time", StringValue ("2s"),
+                                "Time", StringValue (std::to_string(simulationTime)),
                                 "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=20.0]"),
-                                "Bounds", RectangleValue (Rectangle (-distance/2, distance/2, -distance/2, distance/2)));
+                                "Bounds", RectangleValue (Rectangle (-distance, distance, -distance, distance)));
   } 
   else {
     mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
@@ -142,17 +151,17 @@ main (int argc, char *argv[]) {
   Ptr<LoraChannel> channel;
   Ptr<PropagationDelayModel> delay = CreateObject<ConstantSpeedPropagationDelayModel> ();
 
-  // Create the lora channel object
-  if (propLoss == "LogDistancePropagationLossModel") {
+  if (radioEnvironment == "suburban") {
     Ptr<LogDistancePropagationLossModel> loss = CreateObject<LogDistancePropagationLossModel> ();
-    loss->SetPathLossExponent (3.76);
-    loss->SetReference (1, 7.7);
     channel = CreateObject<LoraChannel> (loss, delay);
-  }
-  else if (propLoss == "OkumuraHataPropagationLossModel") {
+  } else if (radioEnvironment == "urban") {
+    Ptr<Cost231PropagationLossModel> loss = CreateObject<Cost231PropagationLossModel> ();
+    channel = CreateObject<LoraChannel> (loss, delay);
+  } else if (radioEnvironment == "rural") {
     Ptr<OkumuraHataPropagationLossModel> loss = CreateObject<OkumuraHataPropagationLossModel> ();
-    //loss->SetPathLossExponent (3.76);
-    //loss->SetReference (1, 7.7);
+    channel = CreateObject<LoraChannel> (loss, delay);;
+  } else if (radioEnvironment == "indoor") {
+    Ptr<HybridBuildingsPropagationLossModel> loss = CreateObject<HybridBuildingsPropagationLossModel> ();
     channel = CreateObject<LoraChannel> (loss, delay);
   }
 
@@ -174,7 +183,7 @@ main (int argc, char *argv[]) {
   // Assign a mobility model to each node
   mobility.Install (endDevices);
 
-  PrintPositions (endDevices);
+  //PrintPositions (endDevices);
 
   // Create the LoraNetDevices of the end devices
   phyHelper.SetDeviceType (LoraPhyHelper::ED);
@@ -187,9 +196,31 @@ main (int argc, char *argv[]) {
 
   Ptr<ListPositionAllocator> allocator = CreateObject<ListPositionAllocator> ();
   // Make it so that nodes are at a certain height > 0
+  MobilityHelper mobilityGW;
   allocator->Add (Vector (0.0, 0.0, 50.0));
-  mobility.SetPositionAllocator (allocator);
-  mobility.Install (gateways);
+  mobilityGW.SetPositionAllocator (allocator);
+  mobilityGW.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+  mobilityGW.Install (gateways);
+
+  if (radioEnvironment == "indoor") {
+      double x_min = 0.0;
+      double x_max = 10.0;
+      double y_min = 0.0;
+      double y_max = 20.0;
+      double z_min = 0.0;
+      double z_max = 10.0;
+      Ptr<Building> b = CreateObject <Building> ();
+      b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
+      b->SetBuildingType (Building::Residential);
+      b->SetExtWallsType (Building::ConcreteWithWindows);
+      b->SetNFloors (3);
+      b->SetNRoomsX (3);
+      b->SetNRoomsY (2);
+
+      BuildingsHelper::Install (endDevices);
+      
+      BuildingsHelper::Install (gateways);
+    }
 
   /*
   CsvReader csv (topologyFile);

@@ -33,13 +33,15 @@
 #include "ns3/lr-wpan-radio-energy-model.h"
 #include "ns3/energy-module.h"
 #include "ns3/core-module.h"
+#include "ns3/buildings-helper.h"
+#include "ns3/building.h"
 
 using namespace ns3;
 
 int main (int argc, char** argv)
 {
   SeedManager::SetSeed (3);  // Changes seed from default of 1 to 3
-  SeedManager::SetRun (5);  // Changes run number from default of 1 to 7
+  SeedManager::SetRun (7);  // Changes run number from default of 1 to 7
 
   bool verbose = true;
   bool disablePcap = true;
@@ -60,7 +62,7 @@ int main (int argc, char** argv)
   uint8_t maxFrameRetries = 5;
   // Topology file name
   std::string topologyFile = "topology.csv";
-  std::string propLoss = "LogDistancePropagationLossModel";
+  std::string radioEnvironment = "rural";
 
   bool latency = true;
 
@@ -68,7 +70,7 @@ int main (int argc, char** argv)
   cmd.AddValue ("nSta", "Number of stations", nSta);
   cmd.AddValue ("nGW", "Number of stations", nGW);
   cmd.AddValue ("distance", "Distance between EDs and PAN", distance);
-  cmd.AddValue ("propLoss", "Loss Propagation Model", propLoss);
+  cmd.AddValue ("radioEnvironment", "Loss Propagation Model", radioEnvironment);
   cmd.AddValue ("simulationTime", "Simulation time", simulationTime);
   cmd.AddValue ("period", "Packet period", period);
   cmd.AddValue ("max_BE", "Max Backoff Exponent", max_BE);
@@ -132,16 +134,39 @@ int main (int argc, char** argv)
 
     MobilityHelper mobilityAp;
     Ptr<ListPositionAllocator> positionAllocGW = CreateObject<ListPositionAllocator> ();
-    positionAllocGW->Add (Vector (0, 0, 0));
+    positionAllocGW->Add (Vector (0, 0, 1));
     mobilityAp.SetPositionAllocator (positionAllocGW);
     mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
     mobilityAp.Install(nodes.Get(0));
 
+    if (radioEnvironment == "indoor") {
+      double x_min = 0.0;
+      double x_max = 10.0;
+      double y_min = 0.0;
+      double y_max = 20.0;
+      double z_min = 0.0;
+      double z_max = 10.0;
+      Ptr<Building> b = CreateObject <Building> ();
+      b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
+      b->SetBuildingType (Building::Residential);
+      b->SetExtWallsType (Building::ConcreteWithWindows);
+      b->SetNFloors (3);
+      b->SetNRoomsX (3);
+      b->SetNRoomsY (2);
+
+      for (uint32_t i = 2; i < nSta; i++) {
+        BuildingsHelper::Install (nodes.Get(i));
+      }
+      
+      BuildingsHelper::Install (nodes.Get(0));
+    }
+
     if (latency) {
-      positionAllocGW->Add (Vector (distance, 0.0, 0.0));
+      positionAllocGW->Add (Vector (distance, 0, 1));
       mobility.SetPositionAllocator (positionAllocGW);
       mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
       mobility.Install (nodes.Get(1));
+      if (radioEnvironment == "indoor") BuildingsHelper::Install (nodes.Get(1));
     }
 
   /*
@@ -217,7 +242,7 @@ int main (int argc, char** argv)
   // Fake PAN association and short address assignment.
   // This is needed because the lr-wpan module does not provide (yet)
   // a full PAN association procedure.
-  lrWpanHelper.AssociateToPan (lrwpanDevices, 0, max_BE, min_BE, csma_backoffs, maxFrameRetries, propLoss);
+  lrWpanHelper.AssociateToPan (lrwpanDevices, 0, max_BE, min_BE, csma_backoffs, maxFrameRetries, radioEnvironment);
 
   InternetStackHelper internetv6;
   internetv6.Install (nodes);

@@ -19,6 +19,7 @@
 #include "s1g-rca.h"
 #include <fstream>
 #include "ns3/string.h"
+#include "ns3/core-module.h"
 
 NS_LOG_COMPONENT_DEFINE("s1g-wifi-network-tim-raw");
 
@@ -397,7 +398,7 @@ void configureNodes(NodeContainer& wifiStaNode, NetDeviceContainer& staDevice) {
 	cout << "Configuring STA Node trace sources..." << endl;
 
 	for (uint32_t i = 0; i < config.Nsta; i++) {
-		cout << "Hooking up trace sources for STA " << i << endl;
+		//cout << "Hooking up trace sources for STA " << i << endl;
 
 		NodeEntry* n = new NodeEntry(i, &stats, wifiStaNode.Get(i),
 				staDevice.Get(i));
@@ -505,14 +506,14 @@ int getBandwidth(string dataMode) {
 			|| dataMode == "MCS2_2" || dataMode == "MCS2_3"
 			|| dataMode == "MCS2_4" || dataMode == "MCS2_5"
 			|| dataMode == "MCS2_6" || dataMode == "MCS2_7"
-			|| dataMode == "MCS2_8")
+			|| dataMode == "MCS2_8" || dataMode == "MCS2_10")
 		return 2;
 
 	else if (dataMode == "MCS4_0" || dataMode == "MCS4_1"
 			|| dataMode == "MCS4_2" || dataMode == "MCS4_3"
 			|| dataMode == "MCS4_4" || dataMode == "MCS4_5"
 			|| dataMode == "MCS4_6" || dataMode == "MCS4_7"
-			|| dataMode == "MCS4_8")
+			|| dataMode == "MCS4_8" || dataMode == "MCS4_10")
 		return 4;
 
 	return 0;
@@ -1133,6 +1134,31 @@ void configureUDPClients() {
 }
 
 void configureUDPEchoClients() {
+	/* Probing */
+	uint32_t packetSizeEcho = 50;
+ 	uint32_t maxPacketCount = 200000;
+ 	Time echoInterPacketInterval = Seconds (2.);
+
+  	uint16_t port = 20, echoPort = 10; // well-known echo port number
+  
+    UdpEchoServerHelper echoServer(echoPort); // Port # 10
+    ApplicationContainer echoServerApps = echoServer.Install(wifiApNode.Get(0));
+    echoServerApps.Start(Seconds(0.0));
+    echoServerApps.Stop(Seconds(config.simulationTime+1));
+
+    // UDP Echo Client application to be installed in the probing station
+    Address serverAddress = Address(apNodeInterface.GetAddress (0));
+    UdpEchoClientHelper echoClient1(serverAddress, echoPort);
+    
+    echoClient1.SetAttribute("MaxPackets", UintegerValue(maxPacketCount));
+    echoClient1.SetAttribute("Interval", TimeValue(echoInterPacketInterval));
+    echoClient1.SetAttribute("PacketSize", UintegerValue(packetSizeEcho));
+
+    ApplicationContainer clientApps1 = echoClient1.Install(wifiStaNode.Get(0));
+    clientApps1.Start(Seconds(0.0));
+    clientApps1.Stop(Seconds(config.simulationTime+1));
+	
+
 	UdpClientHelper clientHelper(apNodeInterface.GetAddress(0), 9); //address of remote node
 	clientHelper.SetAttribute("MaxPackets", UintegerValue(4294967295u));
 	clientHelper.SetAttribute("Interval", TimeValue(Seconds(config.trafficInterval)));
@@ -1141,7 +1167,7 @@ void configureUDPEchoClients() {
 
 	Ptr<UniformRandomVariable> m_rv = CreateObject<UniformRandomVariable>();
 
-	for (uint16_t i = 0; i < config.Nsta; i++) {
+	for (uint16_t i = 1; i < config.Nsta; i++) {
 		clientApp = clientHelper.Install(
 				wifiStaNode.Get(i));
 		clientApp.Get(0)->TraceConnectWithoutContext("Tx",
@@ -1266,6 +1292,8 @@ void PhyStateTrace(std::string context, Time start, Time duration,
 }
 
 int main(int argc, char *argv[]) {
+	SeedManager::SetSeed (3);  // Changes seed from default of 1 to 3
+  SeedManager::SetRun (7);  // Changes run number from default of 1 to 7
 	/*
     uint32_t nDevices = 1; // 1 PAN Node + 1 Probing node + (nDevices-2) communication nodes
  	uint32_t nGW = 1;
@@ -1386,8 +1414,14 @@ int main(int argc, char *argv[]) {
 	//channelBuilder.AddPropagationLoss("ns3::LogDistancePropagationLossModel",
 	//		"Exponent", DoubleValue(3.76), "ReferenceLoss", DoubleValue(8.0),
 	//		"ReferenceDistance", DoubleValue(1.0));
+
+	std::string propLoss;
+	if (config.radioEnvironment == "urban") propLoss = "Cost231PropagationLossModel";
+	else if (config.radioEnvironment == "suburban") propLoss = "LogDistancePropagationLossModel";
+	else if (config.radioEnvironment == "rural") propLoss = "OkumuraHataPropagationLossModel";
+	else if (config.radioEnvironment == "indoor") propLoss = "HybridBuildingsPropagationLossModel";
 	
-	channelBuilder.AddPropagationLoss("ns3::"+config.propLoss);
+	channelBuilder.AddPropagationLoss("ns3::"+propLoss);
 	channelBuilder.SetPropagationDelay(
 			"ns3::ConstantSpeedPropagationDelayModel");
 	Ptr<YansWifiChannel> channel = channelBuilder.Create();
@@ -1397,6 +1431,8 @@ int main(int argc, char *argv[]) {
 	StringValue DataRate;
 
 	std::string data_mode = "MCS" + config.bandWidth + "_" +  config.mcs;
+
+	std::cout << data_mode << std::endl;
 
 	DataRate = StringValue(getWifiMode(data_mode)); // changed
 
@@ -1424,7 +1460,7 @@ int main(int argc, char *argv[]) {
   
 	//DataRate = StringValue("OfdmRate1_3MbpsBW2MHz");
 
-	if (config.mcs == "-1") {
+	if (config.mcs == "10") {
    		wifi.SetRemoteStationManager("ns3::IdealWifiManager");
   	}
   	else {
@@ -1489,6 +1525,7 @@ int main(int argc, char *argv[]) {
    // Ptr<ListPositionAllocator> position = CreateObject<ListPositionAllocator> ();
     //position->Add (Vector (0, 0, 0));
 	if (config.mobileNodes) {
+		/*
 		mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
 										"MinX", DoubleValue (0.0),
 										"MinY", DoubleValue (0.0),
@@ -1496,12 +1533,15 @@ int main(int argc, char *argv[]) {
 										"DeltaY", DoubleValue (10.0),
 										"GridWidth", UintegerValue (3),
 										"LayoutType", StringValue ("RowFirst"));
-
+		*/
+		mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (config.rho),
+                                 "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
+		
 		//mobility.SetPositionAllocator (position);
 		mobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
 									"Mode", StringValue ("Time"),
-									"Time", StringValue ("2s"),
-									"Speed", StringValue ("ns3::ConstantRandomVariable[Constant=20.0]"),
+									"Time", StringValue (to_string(config.simulationTime)),
+									"Speed", StringValue ("ns3::ConstantRandomVariable[Constant=10.0]"),
 									"Bounds", RectangleValue (Rectangle (-config.rho, config.rho, -config.rho, config.rho)));
 		mobility.Install(wifiStaNode);
 		mobility.AssignStreams (wifiStaNode, 0);
@@ -1529,6 +1569,26 @@ int main(int argc, char *argv[]) {
     mobilityAp.SetPositionAllocator (positionAlloc);
     mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
     mobilityAp.Install(wifiApNode);
+
+	if (config.radioEnvironment == "indoor") {
+      double x_min = 0.0;
+      double x_max = 10.0;
+      double y_min = 0.0;
+      double y_max = 20.0;
+      double z_min = 0.0;
+      double z_max = 10.0;
+      Ptr<Building> b = CreateObject <Building> ();
+      b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
+      b->SetBuildingType (Building::Residential);
+      b->SetExtWallsType (Building::ConcreteWithWindows);
+      b->SetNFloors (3);
+      b->SetNRoomsX (3);
+      b->SetNRoomsY (2);
+
+      BuildingsHelper::Install (wifiStaNode);
+      
+      BuildingsHelper::Install (wifiApNode);
+    }
 
 	/*
 

@@ -9,6 +9,8 @@
 #include "ns3/internet-module.h"
 #include "ns3/extension-headers.h"
 #include "ns3/okumura-hata-propagation-loss-model.h"
+#include "ns3/buildings-helper.h"
+#include "ns3/building.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -57,10 +59,10 @@ struct Configuration {
 	/*
 	 * Common configuration parameters
 	 * */
-	double simulationTime = 10; //60
+	double simulationTime = 100; //60
 	uint32_t seed = 1;
 	int NRawSta;
-	uint32_t Nsta = 10;
+	uint32_t Nsta = 20;
 	uint32_t nGW = 1;
 	uint32_t BeaconInterval = 102400;
 	uint32_t batteryCapacity = 5200;
@@ -68,12 +70,12 @@ struct Configuration {
 
 	string datarate = "1";
 	string bandWidth = "2";
-	double rho=20; //50
-	bool mobileNodes;
-	int sgi=1;
-	string mcs="0"; 
+	double rho=50; //50
+	bool mobileNodes = true;
+	int sgi=0;
+	string mcs="10"; 
 	int agregation = 0;
-	string propLoss="LogDistancePropagationLossModel";
+	string radioEnvironment="urban";
 
 	double totaltraffic = 2;
 
@@ -103,7 +105,7 @@ struct Configuration {
 	uint32_t nControlLoops = 0;//  = 100;
 	uint32_t coapPayloadSize = 0;//  = 15;
 
-	double trafficInterval = 1.0 * 1000; //ms 55,110,210,310,410,515,615,720,820,950,1024 beacon interval *4
+	double trafficInterval = 1.0; //S 55,110,210,310,410,515,615,720,820,950,1024 beacon interval *4
 	uint32_t trafficIntervalDeviation = 1000; //1000 discuss with Jeroen
 
 	int SlotFormat=0; //0;

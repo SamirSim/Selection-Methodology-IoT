@@ -131,6 +131,7 @@ MobilityHelper::Install (Ptr<Node> node) const
 {
   Ptr<Object> object = node;
   Ptr<MobilityModel> model = object->GetObject<MobilityModel> ();
+  //std::cout << model->GetTypeId << std::endl;
   if (model == 0)
     {
       model = m_mobility.Create ()->GetObject<MobilityModel> ();
@@ -138,6 +139,7 @@ MobilityHelper::Install (Ptr<Node> node) const
         {
           NS_FATAL_ERROR ("The requested mobility model is not a mobility model: \""<< 
                           m_mobility.GetTypeId ().GetName ()<<"\"");
+          //NS_LOG_DEBUG ("Didn't recognize the MobilityBuildingInfo model");     
         }
       if (m_mobilityStack.empty ())
         {

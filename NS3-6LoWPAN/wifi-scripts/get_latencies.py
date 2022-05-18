@@ -10,7 +10,7 @@ with open(filepath) as fp:
 	line1 = fp.readline()
 	line2 = fp.readline()
 	while line2:
-		if "server received" in line2 and "client sent" in line1:
+		if "UdpEchoServerApplication" in line2 and "UdpEchoClientApplication" in line1:
 			words1 = line1.split()
 			words2 = line2.split()
 			start = float(words1[0].replace('s', '').replace('+', ''))  #Time in logs is in Micro Seconds

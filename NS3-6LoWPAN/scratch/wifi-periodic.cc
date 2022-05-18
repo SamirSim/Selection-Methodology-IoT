@@ -1,4 +1,4 @@
- #include "ns3/command-line.h"
+#include "ns3/command-line.h"
 #include "ns3/config.h"
 #include "ns3/uinteger.h"
 #include "ns3/boolean.h"
@@ -24,7 +24,11 @@
 #include "ns3/wifi-radio-energy-model-helper.h"
 #include "ns3/applications-module.h"
 #include "ns3/propagation-loss-model.h"
- #include "ns3/propagation-delay-model.h"
+#include "ns3/propagation-delay-model.h"
+#include "ns3/building.h"
+#include "ns3/mobility-building-info.h"
+#include "ns3/building-list.h"
+#include "ns3/buildings-helper.h"
 #include <iomanip>
 
 using namespace ns3;
@@ -47,7 +51,7 @@ NS_LOG_COMPONENT_DEFINE ("wifi-periodic");
 
 int main (int argc, char *argv[]) {
   SeedManager::SetSeed (3);  // Changes seed from default of 1 to 3
-  SeedManager::SetRun (2);  // Changes run number from default of 1 to 7
+  SeedManager::SetRun (7);  // Changes run number from default of 1 to 7
   /*/ Input parameters definition /*/
   // Seconds
   double simulationTime = 1; 
@@ -75,8 +79,8 @@ int main (int argc, char *argv[]) {
   int sgi = 0; 
   // Delay propagation model
   std::string propDelay = "ConstantSpeedPropagationDelayModel";
-  // Loss propagation model 
-  std::string propLoss = "Cost231PropagationLossModel";
+  // Radion environment
+  std::string radioEnvironment = "urban";
   // Number of spatial streams 
   int spatialStreams = 3; 
   // Tx current draw in mA
@@ -115,7 +119,7 @@ int main (int argc, char *argv[]) {
   cmd.AddValue ("payloadSize", "Payload size in Bytes", payloadSize);
   cmd.AddValue ("channelWidth", "Channel Width in MHz", channelWidth);
   cmd.AddValue ("propDelay", "Delay Propagation Model", propDelay);
-  cmd.AddValue ("propLoss", "Distance Propagation Model", propLoss);
+  cmd.AddValue ("radioEnvironment", "Distance Propagation Model", radioEnvironment);
   cmd.AddValue ("spatialStreams", "Number of Spatial Streams", spatialStreams);
   cmd.AddValue ("batteryCap", "Battery Capacity in mAh", batteryCap);
   cmd.AddValue ("voltage", "Battery voltage in Volts", voltage);
@@ -153,6 +157,12 @@ int main (int argc, char *argv[]) {
   distance = distance / nGW;
 
   YansWifiChannelHelper channel;
+  std::string propLoss;
+  if (radioEnvironment == "urban") propLoss = "Cost231PropagationLossModel";
+  else if (radioEnvironment == "suburban") propLoss = "LogDistancePropagationLossModel";
+  else if (radioEnvironment == "rural") propLoss = "OkumuraHataPropagationLossModel";
+  else if (radioEnvironment == "indoor") propLoss = "HybridBuildingsPropagationLossModel";
+
   channel.AddPropagationLoss ("ns3::"+propLoss);
   channel.SetPropagationDelay("ns3::"+propDelay);
 
@@ -229,16 +239,37 @@ int main (int argc, char *argv[]) {
 
     MobilityHelper mobilityAp;
     Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
-    positionAlloc->Add (Vector (0, 0, 0));
+    positionAlloc->Add (Vector (0, 0, 1));
     mobilityAp.SetPositionAllocator (positionAlloc);
     mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
     mobilityAp.Install(wifiApNode);
 
+    if (radioEnvironment == "indoor") {
+      double x_min = 0.0;
+      double x_max = 10.0;
+      double y_min = 0.0;
+      double y_max = 20.0;
+      double z_min = 0.0;
+      double z_max = 10.0;
+      Ptr<Building> b = CreateObject <Building> ();
+      b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
+      b->SetBuildingType (Building::Residential);
+      b->SetExtWallsType (Building::ConcreteWithWindows);
+      b->SetNFloors (3);
+      b->SetNRoomsX (3);
+      b->SetNRoomsY (2);
+
+      BuildingsHelper::Install (wifiStaNodes);
+      
+      BuildingsHelper::Install (wifiApNode);
+    }
+
     if (latency) {
-      positionAlloc->Add (Vector (distance, 0.0, 0.0));
+      positionAlloc->Add (Vector (distance, 0, 1));
       mobility.SetPositionAllocator (positionAlloc);
       mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
       mobility.Install (wifiProbingNode);
+      if (radioEnvironment == "indoor") BuildingsHelper::Install (wifiProbingNode);
     }
   }
   /* Layers installation */
@@ -333,7 +364,7 @@ int main (int argc, char *argv[]) {
       UdpEchoClientHelper echoClient1(ApInterface.GetAddress(0), echoPort);
       
       echoClient1.SetAttribute("MaxPackets", UintegerValue(10000));
-      echoClient1.SetAttribute("Interval", TimeValue(Seconds(2)));
+      echoClient1.SetAttribute("Interval", TimeValue(Seconds(0.1)));
       echoClient1.SetAttribute("PacketSize", UintegerValue(payloadSizeEcho));
 
       ApplicationContainer clientApp = echoClient1.Install(wifiProbingNode);

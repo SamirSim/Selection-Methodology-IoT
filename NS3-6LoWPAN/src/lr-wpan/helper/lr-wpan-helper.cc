@@ -28,6 +28,8 @@
 #include <ns3/multi-model-spectrum-channel.h>
 #include <ns3/propagation-loss-model.h>
 #include "ns3/cost231-propagation-loss-model.h"
+#include "ns3/okumura-hata-propagation-loss-model.h"
+#include "ns3/hybrid-buildings-propagation-loss-model.h"
 #include <ns3/propagation-delay-model.h>
 #include <ns3/log.h>
 #include "ns3/names.h"
@@ -231,16 +233,23 @@ LrWpanHelper::AssignStreams (NetDeviceContainer c, int64_t stream)
 }
 
 void
-LrWpanHelper::AssociateToPan (NetDeviceContainer c, uint16_t panId, uint8_t max_BE, uint8_t min_BE, uint8_t csma_backoffs, uint8_t maxFrameRetries, std::string propLoss)
+LrWpanHelper::AssociateToPan (NetDeviceContainer c, uint16_t panId, uint8_t max_BE, uint8_t min_BE, uint8_t csma_backoffs, uint8_t maxFrameRetries, std::string radioEnvironment)
 {
   NetDeviceContainer devices;
   uint16_t id = 1;
   uint8_t idBuf[2];
-  if (propLoss == "LogDistancePropagationLossModem") {
+
+  if (radioEnvironment == "suburban") {
     Ptr<LogDistancePropagationLossModel> propModel = CreateObject<LogDistancePropagationLossModel> ();
     m_channel->AddPropagationLossModel (propModel);
-  } else if (propLoss == "Cost231PropagationLossModel") {
+  } else if (radioEnvironment == "urban") {
     Ptr<Cost231PropagationLossModel> propModel = CreateObject<Cost231PropagationLossModel> ();
+    m_channel->AddPropagationLossModel (propModel);
+  } else if (radioEnvironment == "rural") {
+    Ptr<OkumuraHataPropagationLossModel> propModel = CreateObject<OkumuraHataPropagationLossModel> ();
+    m_channel->AddPropagationLossModel (propModel);
+  } else if (radioEnvironment == "indoor") {
+    Ptr<HybridBuildingsPropagationLossModel> propModel = CreateObject<HybridBuildingsPropagationLossModel> ();
     m_channel->AddPropagationLossModel (propModel);
   }
 

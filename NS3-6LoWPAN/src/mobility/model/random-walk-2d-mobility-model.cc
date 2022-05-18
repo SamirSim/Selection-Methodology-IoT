@@ -165,6 +165,7 @@ RandomWalk2dMobilityModel::DoGetPosition (void) const
 void
 RandomWalk2dMobilityModel::DoSetPosition (const Vector &position)
 {
+  std::cout << position << std::endl;
   NS_ASSERT (m_bounds.IsInside (position));
   m_helper.SetPosition (position);
   m_event.Cancel ();

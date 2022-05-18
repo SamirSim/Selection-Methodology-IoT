@@ -18,7 +18,7 @@ Configuration::Configuration(int argc, char *argv[]) {
     cmd.AddValue ("mobileNodes", "Mobile nodes", mobileNodes);
     cmd.AddValue ("batteryCapacity", "Battery Capacity in Ah", batteryCapacity);
     cmd.AddValue ("voltage", "Battery Voltage in V", voltage);
-    cmd.AddValue ("propLoss", "Loss Propagation Model", propLoss);
+    cmd.AddValue ("radioEnvironment", "Loss Propagation Model", radioEnvironment);
     cmd.AddValue ("NRawSta", "number of stations supporting RAW. If -1 it will be based on NSta, should be divisible by NGroup", NRawSta);
     cmd.AddValue ("payloadSize", "Size of payload to send in bytes", payloadSize);
     cmd.AddValue ("BeaconInterval", "Beacon interval time in us", BeaconInterval);

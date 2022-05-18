@@ -220,7 +220,7 @@ StaWifiMac::SetChannelWidth (uint32_t width)
 uint32_t
 StaWifiMac::GetChannelWidth (void) const
 {
-    NS_LOG_UNCOND (GetAddress () << ", GetChannelWidth " << m_channelWidth );
+    //NS_LOG_UNCOND (GetAddress () << ", GetChannelWidth " << m_channelWidth );
    return m_channelWidth;
 }
 

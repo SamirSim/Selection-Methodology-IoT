@@ -9,10 +9,19 @@ from matplotlib.lines import Line2D
 import pandas as pd
 import random
 
-constraints = 0
+constraints = 1
 
 def price_solution(technology, ned, ngw, battery_lifetime, use_case):
-    battery_changing_price = 500
+    if use_case == "surveillance":
+        battery_changing_price = 5
+    elif use_case == "building-automation":
+        battery_changing_price = 5
+    elif use_case == "smart-grid":
+        battery_changing_price = 50
+    elif use_case == "vehicle-tracking":
+        battery_changing_price = 50
+    else:
+        battery_changing_price = 20
     
     ed_wifi_price = 10
     ed_lorawan_price = 5
@@ -29,6 +38,8 @@ def price_solution(technology, ned, ngw, battery_lifetime, use_case):
     elif use_case == "building-automation":
         period = 830
     elif use_case == "smart-grid":
+        period = 3650
+    elif use_case == "vehicle-tracking":
         period = 3650
     else:
         period = 100
@@ -47,15 +58,28 @@ def explore(technology_configuration_parameters, scenario_parameters, use_case):
     os.environ['DISTANCE'] = str(scenario_parameters['distance'])
     os.environ['TRAFFICDIR'] = scenario_parameters['traffic_direction']
     os.environ['PACKETSIZE'] = str(scenario_parameters['packet_size'])
-    os.environ['PERIOD'] = str(scenario_parameters['packet_period'])
     os.environ['SIMULATION_TIME'] = str(scenario_parameters['simulation_time'])
     os.environ['BATTERY_CAPACITY'] = str(scenario_parameters['battery_capacity'])
     os.environ['BATTERY_VOLTAGE'] = str(scenario_parameters['battery_voltage'])
     os.environ['MOBILENODES'] = str(scenario_parameters['mobile_nodes'])
-    os.environ['PROPLOSS'] = str(scenario_parameters['propagation_loss_model'])
+    os.environ['RADIOENVIRONMENT'] = str(scenario_parameters['radio_environment'])
+    #os.environ['PROPLOSS'] = str(scenario_parameters['propagation_loss_model'])
     technology = configuration_parameters[0]
 
     print(configuration_parameters)
+
+    if use_case == "surveillance":
+        periods = [0.0057, 0.0038, 0.0028]
+        densities = [40, 50, 60, 70]
+    elif use_case == "building-automation":
+        periods = [1, 0.5, 0.33]
+        densities = [60, 70, 80, 90]
+    elif use_case == "smart-grid":
+        periods = [180, 120, 60]
+        densities = [300, 400, 500, 600]
+    elif use_case == "vehicle-tracking":
+        periods = [300, 200, 100]
+        densities = [30, 40, 50, 60]
 
     if technology == "WiFi":
         mcs = configuration_parameters[1]
@@ -64,45 +88,43 @@ def explore(technology_configuration_parameters, scenario_parameters, use_case):
         agregation = configuration_parameters[4]
         ngateway = configuration_parameters[5]
 
-        for nb_devices in range(int(scenario_parameters['nb_devices'])+10, int(scenario_parameters['nb_devices'])+20, 5):
-            os.environ['MCS'] = str(mcs)
-            os.environ['SGI'] = str(sgi)
-            os.environ['SPATIALSTREAMS'] = str(spatial_stream)
-            os.environ['AGREGATION'] = str(agregation)
-            os.environ['NBDEVICES'] = str(nb_devices)
-            os.environ['NGW'] = str(ngateway)
-            os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+".txt"
-            os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-parsed.txt"
+        for nb_devices in densities:
+            for packet_period in periods:
+                os.environ['MCS'] = str(mcs)
+                os.environ['SGI'] = str(sgi)
+                os.environ['SPATIALSTREAMS'] = str(spatial_stream)
+                os.environ['AGREGATION'] = str(agregation)
+                os.environ['NBDEVICES'] = str(nb_devices)
+                os.environ['PERIOD'] = str(packet_period)
+                os.environ['NGW'] = str(ngateway)
+                os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+".txt"
+                os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+"-parsed.txt"
 
-            output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/wifi-periodic.cc --propLoss=$PROPLOSS --nGW=$NGW --agregation=$AGREGATION --sgi=$SGI --spatialStreams=$SPATIALSTREAMS --simulationTime=$SIMULATION_TIME --nWifi=$NBDEVICES --trafficDirection=$TRAFFICDIR --period=$PERIOD --payloadSize=$PACKETSIZE --batteryCap=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
-            latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "client sent 1023 bytes" -e "server received 1023 bytes from" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
-            #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
+                output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/wifi-periodic.cc --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --agregation=$AGREGATION --sgi=$SGI --spatialStreams=$SPATIALSTREAMS --simulationTime=$SIMULATION_TIME --nWifi=$NBDEVICES --trafficDirection=$TRAFFICDIR --period=$PERIOD --payloadSize=$PACKETSIZE --batteryCap=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "UdpEchoClientApplication" -e "UdpEchoServerApplication" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
+                #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            lines = output.splitlines()
-            line = lines[0]
-            #print(lines)
-            i = 0
-            while "Total" not in line:
-                i = i + 1
-                line = lines[i]
-            energy = float(lines[i].split()[-1])
-            battery_lifetime = float(lines[i+1].split()[-1])
-            #throughput = float(lines[i+2].split()[-1])
-            success_rate = float(lines[i+3].split()[-1])
-            latency = float(latency) * 1000
-            price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
+                lines = output.splitlines()
+                line = lines[0]
+                #print(lines)
+                i = 0
+                while "Total" not in line:
+                    i = i + 1
+                    line = lines[i]
+                energy = float(lines[i].split()[-1])
+                battery_lifetime = float(lines[i+1].split()[-1])
+                #throughput = float(lines[i+2].split()[-1])
+                success_rate = float(lines[i+3].split()[-1])
+                latency = float(latency) * 1000
+                price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
 
-            if constraints:
-                battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                latency = continuous_constraint(latency, 0, max_latency)
+                result = [success_rate, battery_lifetime, latency, price]
+                                        
+                #configuration = "WiFi-"+str(mcs)+"-"+str(sgi)+"-"+str(spatial_stream)+"-"+str(agregation)+"-"+str(ngateway)
+                configuration = "WiFi-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+"-Period"+str(packet_period)+": "+str(result)
+                results_exploration.append(configuration)
 
-            result = [success_rate, battery_lifetime, latency, price]
-                                    
-            #configuration = "WiFi-"+str(mcs)+"-"+str(sgi)+"-"+str(spatial_stream)+"-"+str(agregation)+"-"+str(ngateway)
-            configuration = "WiFi-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+": "+str(result)
-            results_exploration.append(configuration)
-
-            #print("WiFi: ", mcs, sgi, spatial_stream, agregation, ngateway, result)
+                #print("WiFi: ", mcs, sgi, spatial_stream, agregation, ngateway, result)
 
 
     elif technology == "LoRaWAN":
@@ -112,45 +134,43 @@ def explore(technology_configuration_parameters, scenario_parameters, use_case):
         traffic = configuration_parameters[4]
         ngateway = configuration_parameters[5]
 
-        for nb_devices in range(int(scenario_parameters['nb_devices'])+10, int(scenario_parameters['nb_devices'])+20, 5):
-            os.environ['SF'] = str(sf)
-            os.environ['CODINGRATE'] = str(coding_rate)
-            os.environ['CRC'] = str(crc)
-            os.environ['TRAFFIC'] = str(traffic)
-            os.environ['NBDEVICES'] = str(nb_devices)
-            os.environ['NGW'] = str(ngateway)
-            os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+".txt"
-            os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-parsed.txt"
+        for nb_devices in densities:
+            for packet_period in periods:
+                os.environ['SF'] = str(sf)
+                os.environ['CODINGRATE'] = str(coding_rate)
+                os.environ['CRC'] = str(crc)
+                os.environ['TRAFFIC'] = str(traffic)
+                os.environ['NBDEVICES'] = str(nb_devices)
+                os.environ['PERIOD'] = str(packet_period)
+                os.environ['NGW'] = str(ngateway)
+                os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+".txt"
+                os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+"-parsed.txt"
 
-            output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/lora-periodic.cc --mobileNodes=$MOBILENODES --propLoss=$PROPLOSS --nGateways=$NGW --trafficType=$TRAFFIC --SF=$SF --codingRate=$CODINGRATE --crc=$CRC --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --payloadSize=$PACKETSIZE --period=$PERIOD" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
-            output = output + "Energy consumption: " + subprocess.check_output("cd NS3-6LoWPAN; cat $LOGFILE | grep -e 'LoraRadioEnergyModel:Total energy consumption' | tail -1 | awk 'NF>1{print $NF}' | sed 's/J//g'", shell=True, text=True,stderr=subprocess.DEVNULL)
-            latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "Total time" > $LOGFILEPARSED; python3 lora-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
-            #subprocess.check_output('rm "log-lora.txt"; rm "log-lora-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
+                output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/lora-periodic.cc --mobileNodes=$MOBILENODES --radioEnvironment=$RADIOENVIRONMENT --nGateways=$NGW --trafficType=$TRAFFIC --SF=$SF --codingRate=$CODINGRATE --crc=$CRC --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --payloadSize=$PACKETSIZE --period=$PERIOD" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                output = output + "Energy consumption: " + subprocess.check_output("cd NS3-6LoWPAN; cat $LOGFILE | grep -e 'LoraRadioEnergyModel:Total energy consumption' | tail -1 | awk 'NF>1{print $NF}' | sed 's/J//g'", shell=True, text=True,stderr=subprocess.DEVNULL)
+                latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "Total time" > $LOGFILEPARSED; python3 lora-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
+                #subprocess.check_output('rm "log-lora.txt"; rm "log-lora-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            #throughput = 0
-            lines = output.splitlines()
-            line = lines[0]
-            i = 0
-            while "Success" not in line:
-                i = i + 1
-                line = lines[i]
-            success_rate = round(float(lines[i].split()[-1]), 2)
-            #throughput = round(float(lines[i+1].split()[-1]), 2)
-            energy = float(lines[i+2].split()[-1])
-            capacity = (float(scenario_parameters['battery_capacity']) / 1000.0) * float(scenario_parameters['battery_voltage']) * 3600
-            battery_lifetime = round(((capacity / energy) * float(scenario_parameters['simulation_time'])) / 86400, 2)
-            energy = round(energy, 2)
-            latency = float(latency) * 1000
-            price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
+                #throughput = 0
+                lines = output.splitlines()
+                line = lines[0]
+                i = 0
+                while "Success" not in line:
+                    i = i + 1
+                    line = lines[i]
+                success_rate = round(float(lines[i].split()[-1]), 2)
+                #throughput = round(float(lines[i+1].split()[-1]), 2)
+                energy = float(lines[i+2].split()[-1])
+                capacity = (float(scenario_parameters['battery_capacity']) / 1000.0) * float(scenario_parameters['battery_voltage']) * 3600
+                battery_lifetime = round(((capacity / energy) * float(scenario_parameters['simulation_time'])) / 86400, 2)
+                energy = round(energy, 2)
+                latency = float(latency) * 1000
+                price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
 
-            if constraints:
-                battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                latency = continuous_constraint(latency, 0, max_latency)
+                result = [success_rate, battery_lifetime, latency, price]
 
-            result = [success_rate, battery_lifetime, latency, price]
-
-            configuration = "LoRaWAN-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+": "+str(result)
-            results_exploration.append(configuration)
+                configuration = "LoRaWAN-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+"-Period"+str(packet_period)+": "+str(result)
+                results_exploration.append(configuration)
 
     elif technology == "6LoWPAN":
         frame_retries = configuration_parameters[1]
@@ -159,42 +179,40 @@ def explore(technology_configuration_parameters, scenario_parameters, use_case):
         min_be = configuration_parameters[4]
         ngateway = configuration_parameters[5]
 
-        for nb_devices in range(int(scenario_parameters['nb_devices'])+10, int(scenario_parameters['nb_devices'])+20, 5):
-            os.environ['MAXFRAMERETRIES'] = str(frame_retries)
-            os.environ['CSMABACKOFF'] = str(csma_backoff)
-            os.environ['MAXBE'] = str(max_be)
-            os.environ['MINBE'] = str(min_be)
-            os.environ['NBDEVICES'] = str(nb_devices)
-            os.environ['NGW'] = str(ngateway)
-            os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
-            os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-parsed.txt"
+        for nb_devices in densities:
+            for packet_period in periods:
+                os.environ['MAXFRAMERETRIES'] = str(frame_retries)
+                os.environ['CSMABACKOFF'] = str(csma_backoff)
+                os.environ['MAXBE'] = str(max_be)
+                os.environ['MINBE'] = str(min_be)
+                os.environ['NBDEVICES'] = str(nb_devices)
+                os.environ['PERIOD'] = str(packet_period)
+                os.environ['NGW'] = str(ngateway)
+                os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+".txt"
+                os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+"-parsed.txt"
 
-            output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/6lowpan-periodic.cc --propLoss=$PROPLOSS --nGW=$NGW --maxFrameRetries=$MAXFRAMERETRIES --max_BE=$MAXBE --min_BE=$MINBE --csma_backoffs=$CSMABACKOFF --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --packetSize=$PACKETSIZE --period=$PERIOD --capacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/6lowpan-periodic.cc --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --maxFrameRetries=$MAXFRAMERETRIES --max_BE=$MAXBE --min_BE=$MINBE --csma_backoffs=$CSMABACKOFF --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --packetSize=$PACKETSIZE --period=$PERIOD --capacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "client sent 50 bytes" -e "server received 50 bytes from" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
-            #subprocess.check_output('rm "log-6lowpan.txt"; rm "log-6lowpan-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
+                latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "UdpEchoClientApplication" -e "UdpEchoServerApplication" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
+                #subprocess.check_output('rm "log-6lowpan.txt"; rm "log-6lowpan-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            lines = output.splitlines()
-            line = lines[0]
-            i = 0
-            while "Total" not in line:
-                i = i + 1
-                line = lines[i]
-            energy = float(lines[i].split()[-1])
-            battery_lifetime = float(lines[i+1].split()[-1])
-            #throughput = float(lines[i+2].split()[-1])
-            success_rate = float(lines[i+3].split()[-1])
-            latency = float(latency) * 1000
-            price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
+                lines = output.splitlines()
+                line = lines[0]
+                i = 0
+                while "Total" not in line:
+                    i = i + 1
+                    line = lines[i]
+                energy = float(lines[i].split()[-1])
+                battery_lifetime = float(lines[i+1].split()[-1])
+                #throughput = float(lines[i+2].split()[-1])
+                success_rate = float(lines[i+3].split()[-1])
+                latency = float(latency) * 1000
+                price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
 
-            if constraints:
-                battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                latency = continuous_constraint(latency, 0, max_latency)
+                result = [success_rate, battery_lifetime, latency, price]
 
-            result = [success_rate, battery_lifetime, latency, price]
-
-            configuration = "6LoWPAN-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+": "+str(result)
-            results_exploration.append(configuration)
+                configuration = "6LoWPAN-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+"-Period"+str(packet_period)+": "+str(result)
+                results_exploration.append(configuration)
 
     elif technology == "802.11ah":
         mcs = configuration_parameters[1]
@@ -203,41 +221,42 @@ def explore(technology_configuration_parameters, scenario_parameters, use_case):
         nraw_groups = configuration_parameters[4]
         ngateway = configuration_parameters[5]
 
-        for nb_devices in range(int(scenario_parameters['nb_devices'])+10, int(scenario_parameters['nb_devices'])+20, 5):
-            os.environ['MCS'] = str(mcs)
-            os.environ['SGI'] = str(sgi)
-            os.environ['BEACONINTERVAL'] = str(beacon_interval)
-            os.environ['NRAWGROUPS'] = str(nraw_groups)
-            os.environ['NBDEVICES'] = str(nb_devices)
-            os.environ['NGW'] = str(ngateway)
-            os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
+        for nb_devices in densities:
+            for packet_period in periods:
+                os.environ['MCS'] = str(mcs)
+                os.environ['SGI'] = str(sgi)
+                os.environ['BEACONINTERVAL'] = str(beacon_interval)
+                os.environ['NRAWGROUPS'] = str(nraw_groups)
+                os.environ['NBDEVICES'] = str(nb_devices)
+                os.environ['PERIOD'] = str(packet_period)
+                os.environ['NGW'] = str(ngateway)
+                os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+".txt"
+                os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+"-"+str(nb_devices)+"-"+str(packet_period)+"-parsed.txt"
 
-            #subprocess.check_output("cd NS3-802.11ah; ./scratch/RAWGenerate.sh $NBDEVICES $NRAWGROUPS $BEACONINTERVAL", shell=True, text=True,stderr=subprocess.DEVNULL)
-            output = subprocess.check_output('cd NS3-802.11ah; ./waf --run "rca --Nsta=$NBDEVICES --mobileNodes=$MOBILENODES --propLoss=$PROPLOSS --nGW=$NGW --mcs=$MCS --sgi=$SGI --BeaconInterval=$BEACONINTERVAL --NGroup=$NRAWGROUPS --rho=$DISTANCE --simulationTime=$SIMULATION_TIME --trafficInterval=$PERIOD --payloadSize=$PACKETSIZE --batteryCapacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
-            latency = subprocess.check_output('cd NS3-802.11ah; python3 halow-scripts/get_latencies.py $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
-            #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
+                #subprocess.check_output("cd NS3-802.11ah; ./scratch/RAWGenerate.sh $NBDEVICES $NRAWGROUPS $BEACONINTERVAL", shell=True, text=True,stderr=subprocess.DEVNULL)
+                output = subprocess.check_output('cd NS3-802.11ah; ./waf --run "rca --Nsta=$NBDEVICES --mobileNodes=$MOBILENODES --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --mcs=$MCS --sgi=$SGI --BeaconInterval=$BEACONINTERVAL --NGroup=$NRAWGROUPS --rho=$DISTANCE --simulationTime=$SIMULATION_TIME --trafficInterval=$PERIOD --payloadSize=$PACKETSIZE --batteryCapacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                latency = subprocess.check_output('cd NS3-802.11ah; cat $LOGFILE | grep -e "UdpEchoClientApplication" -e "UdpEchoServerApplication" > $LOGFILEPARSED; python3 halow-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            lines = output.splitlines()
-            line = lines[0]
-            i = 0
-            while "Total" not in line:
-                i = i + 1
-                line = lines[i]
-            energy = float(lines[i].split()[-1])
-            battery_lifetime = float(lines[i+1].split()[-1])
-            #throughput = float(lines[i+2].split()[-1])
-            success_rate = float(lines[i+3].split()[-1])
-            latency = float(latency) * 1000
-            price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
+                #latency = subprocess.check_output('cd NS3-802.11ah; python3 halow-scripts/get_latencies.py $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
-            if constraints:
-                battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                latency = continuous_constraint(latency, 0, max_latency)
+                lines = output.splitlines()
+                line = lines[0]
+                i = 0
+                while "Total" not in line:
+                    i = i + 1
+                    line = lines[i]
+                energy = float(lines[i].split()[-1])
+                battery_lifetime = float(lines[i+1].split()[-1])
+                #throughput = float(lines[i+2].split()[-1])
+                success_rate = float(lines[i+3].split()[-1])
+                latency = float(latency) * 1000
+                price = price_solution(technology, nb_devices, int(ngateway), battery_lifetime, use_case)
 
-            result = [success_rate, battery_lifetime, latency, price]
+                result = [success_rate, battery_lifetime, latency, price]
 
-            configuration = "HaLow-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+": "+str(result)
-            results_exploration.append(configuration)
+                configuration = "HaLow-GW"+str(ngateway)+"-Nsta"+str(nb_devices)+"-Period"+str(packet_period)+": "+str(result)
+                results_exploration.append(configuration)
 
     return results_exploration
     
@@ -268,22 +287,65 @@ elif use_case == "building-automation":
 elif use_case == "smart-grid":
     max_latency = 1000
     min_lifetime = 365
+elif use_case == "vehicle-tracking":
+    max_latency = 100
+    min_lifetime = 180
 else:
     max_latency = 1
     min_lifetime = 0
 
-scenario_parameters = {
-    "distance": 10,
-    "nb_devices": 20,
+scenario_parameters_list = [{
+    "distance": 30,
+    "nb_devices": 30,
     "traffic_direction": "upstream",
     "packet_size": 1500,
-    "packet_period": 0.005,
+    "packet_period": 0.0057,
     "battery_capacity": 2400,
     "mobile_nodes": 0,
     "battery_voltage": 3,
     "simulation_time": 5,
-    "propagation_loss_model": "LogDistancePropagationLossModel"
+    "radio_environment": "urban"
+    #"propagation_loss_model": "Cost231PropagationLossModel"
+}, {
+    "distance": 40,
+    "nb_devices": 50,
+    "traffic_direction": "upstream",
+    "packet_size": 100,
+    "packet_period": 1,
+    "battery_capacity": 2400,
+    "mobile_nodes": 0,
+    "battery_voltage": 3,
+    "simulation_time": 500,
+    "radio_environment": "indoor"
+    #"propagation_loss_model": "HybridBuildingsPropagationLossModel"
+}, {
+    "distance": 1500,
+    "nb_devices": 200,
+    "traffic_direction": "upstream",
+    "packet_size": 30,
+    "packet_period": 180,
+    "battery_capacity": 2400,
+    "mobile_nodes": 0,
+    "battery_voltage": 3,
+    "simulation_time": 30000,
+    "radio_environment": "rural"
+    #"propagation_loss_model": "OkumuraHataPropagationLossModel"
+}, {
+    "distance": 500,
+    "nb_devices": 20,
+    "traffic_direction": "upstream",
+    "packet_size": 20,
+    "packet_period": 300,
+    "battery_capacity": 2400,
+    "mobile_nodes": 1,
+    "battery_voltage": 3,
+    "simulation_time": 150000,
+    "radio_environment": "suburban"
+    #"propagation_loss_model": "LogDistancePropagationLossModel"
 }
+]
+# 0: surveillance, 1: building-automation, 2: smart-grid, 3: vehicle-tracking,
+scenario_parameters = scenario_parameters_list[1]
 
 print(scenario_parameters)
 
@@ -321,6 +383,9 @@ number_gateways = [1, 2, 3]
 def pruning(scenario_parameters, technologies):
     pass
 
+result_constrained = []
+results_constrained = []
+
 def evaluation(scenario_parameters, evaluation_tool, technology):
     os.environ['DISTANCE'] = str(scenario_parameters['distance'])
     os.environ['NBDEVICES'] = str(scenario_parameters['nb_devices'])
@@ -331,7 +396,8 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
     os.environ['BATTERY_CAPACITY'] = str(scenario_parameters['battery_capacity'])
     os.environ['BATTERY_VOLTAGE'] = str(scenario_parameters['battery_voltage'])
     os.environ['MOBILENODES'] = str(scenario_parameters['mobile_nodes'])
-    os.environ['PROPLOSS'] = str(scenario_parameters['propagation_loss_model'])
+    os.environ['RADIOENVIRONMENT'] = str(scenario_parameters['radio_environment'])
+    #os.environ['PROPLOSS'] = str(scenario_parameters['propagation_loss_model'])
 
     #output = subprocess.check_output('python3 generate-positions.py $DISTANCE $NBDEVICES $NBGW $FILENAME', shell=True, text=True,stderr=subprocess.DEVNULL)
 
@@ -359,7 +425,7 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
                                     os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-parsed.txt"
 
-                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/wifi-periodic.cc --propLoss=$PROPLOSS --nGW=$NGW --agregation=$AGREGATION --sgi=$SGI --spatialStreams=$SPATIALSTREAMS --simulationTime=$SIMULATION_TIME --nWifi=$NBDEVICES --trafficDirection=$TRAFFICDIR --period=$PERIOD --payloadSize=$PACKETSIZE --batteryCap=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/wifi-periodic.cc --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --agregation=$AGREGATION --sgi=$SGI --spatialStreams=$SPATIALSTREAMS --simulationTime=$SIMULATION_TIME --nWifi=$NBDEVICES --trafficDirection=$TRAFFICDIR --period=$PERIOD --payloadSize=$PACKETSIZE --batteryCap=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "client sent 1023 bytes" -e "server received 1023 bytes from" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
@@ -378,8 +444,10 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     price = price_solution(technology, scenario_parameters['nb_devices'], ngateway, battery_lifetime, use_case)
 
                                     if constraints:
-                                        battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                                        latency = continuous_constraint(latency, 0, max_latency)
+                                        battery_lifetime_constrained = continuous_constraint(battery_lifetime, 1, min_lifetime)
+                                        latency_constrained = continuous_constraint(latency, 0, max_latency)
+                                        result_constrained = [success_rate, battery_lifetime_constrained, latency_constrained, price]
+                                        results_constrained.append(result_constrained)
 
                                     result = [success_rate, battery_lifetime, latency, price]
                                     
@@ -417,7 +485,7 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
                                     os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-parsed.txt"
 
-                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/lora-periodic.cc --mobileNodes=$MOBILENODES --propLoss=$PROPLOSS --nGateways=$NGW --trafficType=$TRAFFIC --SF=$SF --codingRate=$CODINGRATE --crc=$CRC --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --payloadSize=$PACKETSIZE --period=$PERIOD" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/lora-periodic.cc --mobileNodes=$MOBILENODES --radioEnvironment=$RADIOENVIRONMENT --nGateways=$NGW --trafficType=$TRAFFIC --SF=$SF --codingRate=$CODINGRATE --crc=$CRC --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --payloadSize=$PACKETSIZE --period=$PERIOD" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     output = output + "Energy consumption: " + subprocess.check_output("cd NS3-6LoWPAN; cat $LOGFILE | grep -e 'LoraRadioEnergyModel:Total energy consumption' | tail -1 | awk 'NF>1{print $NF}' | sed 's/J//g'", shell=True, text=True,stderr=subprocess.DEVNULL)
                                     latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "Total time" > $LOGFILEPARSED; python3 lora-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     #subprocess.check_output('rm "log-lora.txt"; rm "log-lora-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
@@ -439,8 +507,10 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     price = price_solution(technology, scenario_parameters['nb_devices'], ngateway, battery_lifetime, use_case)
 
                                     if constraints:
-                                        battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                                        latency = continuous_constraint(latency, 0, max_latency)
+                                        battery_lifetime_constrained = continuous_constraint(battery_lifetime, 1, min_lifetime)
+                                        latency_constrained = continuous_constraint(latency, 0, max_latency)
+                                        result_constrained = [success_rate, battery_lifetime_constrained, latency_constrained, price]
+                                        results_constrained.append(result_constrained)
 
                                     result = [success_rate, battery_lifetime, latency, price]
 
@@ -478,7 +548,7 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
                                     os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-parsed.txt"
 
-                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/6lowpan-periodic.cc --propLoss=$PROPLOSS --nGW=$NGW --maxFrameRetries=$MAXFRAMERETRIES --max_BE=$MAXBE --min_BE=$MINBE --csma_backoffs=$CSMABACKOFF --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --packetSize=$PACKETSIZE --period=$PERIOD --capacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                                    output = subprocess.check_output('cd NS3-6LoWPAN; ./waf --run "scratch/6lowpan-periodic.cc --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --maxFrameRetries=$MAXFRAMERETRIES --max_BE=$MAXBE --min_BE=$MINBE --csma_backoffs=$CSMABACKOFF --distance=$DISTANCE --simulationTime=$SIMULATION_TIME --nSta=$NBDEVICES --packetSize=$PACKETSIZE --period=$PERIOD --capacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
 
                                     latency = subprocess.check_output('cd NS3-6LoWPAN; cat $LOGFILE | grep -e "client sent 50 bytes" -e "server received 50 bytes from" > $LOGFILEPARSED; python3 wifi-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     #subprocess.check_output('rm "log-6lowpan.txt"; rm "log-6lowpan-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
@@ -497,8 +567,10 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     price = price_solution(technology, scenario_parameters['nb_devices'], ngateway, battery_lifetime, use_case)
 
                                     if constraints:
-                                        battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                                        latency = continuous_constraint(latency, 0, max_latency)
+                                        battery_lifetime_constrained = continuous_constraint(battery_lifetime, 1, min_lifetime)
+                                        latency_constrained = continuous_constraint(latency, 0, max_latency)
+                                        result_constrained = [success_rate, battery_lifetime_constrained, latency_constrained, price]
+                                        results_constrained.append(result_constrained)
 
                                     result = [success_rate, battery_lifetime, latency, price]
 
@@ -518,8 +590,8 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
             if scenario_parameters['distance'] > 2000 or scenario_parameters['packet_period'] < 0.1:
                 print("pruning applied on ", technology)
             else:
-                MCS_list = [0]
-                SGI_list = [1]
+                MCS_list = [10]
+                SGI_list = [0]
                 beacon_interval_list = [51200]
                 nraw_groups_list = [1]
 
@@ -534,10 +606,13 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     os.environ['NRAWGROUPS'] = str(nraw_groups)
                                     os.environ['NGW'] = str(ngateway)
                                     os.environ['LOGFILE'] = "log-"+technology+"-"+str(use_case)+".txt"
+                                    os.environ['LOGFILEPARSED'] = "log-"+technology+"-"+str(use_case)+"-parsed.txt"
 
                                     #subprocess.check_output("cd NS3-802.11ah; ./scratch/RAWGenerate.sh $NBDEVICES $NRAWGROUPS $BEACONINTERVAL", shell=True, text=True,stderr=subprocess.DEVNULL)
-                                    output = subprocess.check_output('cd NS3-802.11ah; ./waf --run "rca --Nsta=$NBDEVICES --mobileNodes=$MOBILENODES --propLoss=$PROPLOSS --nGW=$NGW --mcs=$MCS --sgi=$SGI --BeaconInterval=$BEACONINTERVAL --NGroup=$NRAWGROUPS --rho=$DISTANCE --simulationTime=$SIMULATION_TIME --trafficInterval=$PERIOD --payloadSize=$PACKETSIZE --batteryCapacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
-                                    latency = subprocess.check_output('cd NS3-802.11ah; python3 halow-scripts/get_latencies.py $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                                    output = subprocess.check_output('cd NS3-802.11ah; ./waf --run "rca --Nsta=$NBDEVICES --mobileNodes=$MOBILENODES --radioEnvironment=$RADIOENVIRONMENT --nGW=$NGW --mcs=$MCS --sgi=$SGI --BeaconInterval=$BEACONINTERVAL --NGroup=$NRAWGROUPS --rho=$DISTANCE --simulationTime=$SIMULATION_TIME --trafficInterval=$PERIOD --payloadSize=$PACKETSIZE --batteryCapacity=$BATTERY_CAPACITY --voltage=$BATTERY_VOLTAGE" 2> $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
+                                    latency = subprocess.check_output('cd NS3-802.11ah; cat $LOGFILE | grep -e "UdpEchoClientApplication" -e "UdpEchoServerApplication" > $LOGFILEPARSED; python3 halow-scripts/get_latencies.py $LOGFILEPARSED', shell=True, text=True,stderr=subprocess.DEVNULL)
+
+                                    #latency = subprocess.check_output('cd NS3-802.11ah; python3 halow-scripts/get_latencies.py $LOGFILE', shell=True, text=True,stderr=subprocess.DEVNULL)
                                     #subprocess.check_output('rm "log-wifi.txt"; rm "log-wifi-parsed.txt"', shell=True, text=True,stderr=subprocess.DEVNULL)
 
                                     lines = output.splitlines()
@@ -554,8 +629,10 @@ def evaluation(scenario_parameters, evaluation_tool, technology):
                                     price = price_solution(technology, scenario_parameters['nb_devices'], ngateway, battery_lifetime, use_case)
 
                                     if constraints:
-                                        battery_lifetime = continuous_constraint(battery_lifetime, 1, min_lifetime)
-                                        latency = continuous_constraint(latency, 0, max_latency)
+                                        battery_lifetime_constrained = continuous_constraint(battery_lifetime, 1, min_lifetime)
+                                        latency_constrained = continuous_constraint(latency, 0, max_latency)
+                                        result_constrained = [success_rate, battery_lifetime_constrained, latency_constrained, price]
+                                        results_constrained.append(result_constrained)
 
                                     result = [success_rate, battery_lifetime, latency, price]
 
@@ -606,7 +683,7 @@ def selection(attributes, I):
                 worst_value = max(worst_value, attributes[i][j])
         best_solution.append(best_value)
         worst_solution.append(worst_value)
-
+    
     distances_from_best = []
     distances_from_worst = []
     for i in range(len(attributes)):
@@ -632,7 +709,7 @@ for technology in technologies:
 #results = [ [100, 182.48, 0.34, 700], [100, 187.36, 0.21, 1400], [100, 188.9, 0.25, 2100], [81.9231, 804.818, 43.96, 200], [96.859, 1054.89, 39.86, 400], [99.902, 1208.81, 7.08, 600],
             #[90.9, 969.665, 11.63, 200], [100, 1052.57, 20.28, 400], [100, 1053.8, 33.35, 600]]
 
-normalized = normalize(results)
+normalized = normalize(results_constrained)
 weighted = weight(normalized, metrics_weights)
 
 result = selection(weighted, I)
@@ -655,7 +732,7 @@ print("Selection: The best technology is: ", technologies_configuration[result.i
 
 best_technology = technologies_configuration_parameters[result.index(max(result))]
 
-results = list(map(list, zip(*normalized)))
+results = list(map(list, zip(*weighted)))
 
 metrics = ['Packet Delivery \n (%)','Battery Lifetime \n (Days)','Packet Latency \n (ms)','Cost \n ($)']
 
