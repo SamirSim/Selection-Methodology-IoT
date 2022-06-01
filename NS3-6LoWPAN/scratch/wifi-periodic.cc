@@ -364,7 +364,7 @@ int main (int argc, char *argv[]) {
       UdpEchoClientHelper echoClient1(ApInterface.GetAddress(0), echoPort);
       
       echoClient1.SetAttribute("MaxPackets", UintegerValue(10000));
-      echoClient1.SetAttribute("Interval", TimeValue(Seconds(0.1)));
+      echoClient1.SetAttribute("Interval", TimeValue(Seconds(0.05)));
       echoClient1.SetAttribute("PacketSize", UintegerValue(payloadSizeEcho));
 
       ApplicationContainer clientApp = echoClient1.Install(wifiProbingNode);

@@ -303,7 +303,7 @@ scenario_parameters_list = [{
     "battery_capacity": 2400,
     "mobile_nodes": 0,
     "battery_voltage": 3,
-    "simulation_time": 5,
+    "simulation_time": 2.5,
     "radio_environment": "urban"
     #"propagation_loss_model": "Cost231PropagationLossModel"
 }, {
@@ -345,7 +345,7 @@ scenario_parameters_list = [{
 }
 ]
 # 0: surveillance, 1: building-automation, 2: smart-grid, 3: vehicle-tracking,
-scenario_parameters = scenario_parameters_list[1]
+scenario_parameters = scenario_parameters_list[0]
 
 print(scenario_parameters)
 
@@ -359,7 +359,7 @@ metrics_weights = {
 }
 """
 # Weights of attributes (positive and sum = 1)
-metrics_weights = [0.2, 0.2, 0.2, 0.2]
+metrics_weights = [0.25, 0.25, 0.25, 0.25]
 
 # Indicate type of metric (1 for benefit and 0 for cost)
 I = [1, 1, 0, 0]

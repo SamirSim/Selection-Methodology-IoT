@@ -1,0 +1,17 @@
+{'distance': 500, 'nb_devices': 20, 'traffic_direction': 'upstream', 'packet_size': 20, 'packet_period': 300, 'battery_capacity': 2400, 'mobile_nodes': 1, 'battery_voltage': 3, 'simulation_time': 150000, 'radio_environment': 'suburban'}
+pruning applied on  WiFi
+pruning applied on  6LoWPAN
+HaLow-GW1 [9.77905, 263.323, 133.21, 14300] 0.07
+HaLow-GW2 [31.6737, 277.552, 148.15, 15300] 0.12
+LoRaWAN-GW1 [100.0, 4539.88, 66.8160000000129, 1100] 1.00
+LoRaWAN-GW2 [100.0, 4539.88, 66.81600000000876, 2100] 0.96
+Selection: The best technology is:  LoRaWAN-GW1
+         group  Packet Delivery \n (%)  ...  Packet Latency \n (ms)  Cost \n ($)
+0    HaLow-GW1                0.013465  ...                0.109045     0.135699
+1    HaLow-GW2                0.043611  ...                0.121274     0.145188
+2  LoRaWAN-GW1                0.137689  ...                0.081859     0.010438
+3  LoRaWAN-GW2                0.137689  ...                0.081859     0.019928
+
+[4 rows x 5 columns]
+['LoRaWAN', '0', '1', '0', 'Unconfirmed', '1']
+['LoRaWAN-GW1-Nsta30-Period300: [100.0, 4539.87, 66.81600000001431, 1150]', 'LoRaWAN-GW1-Nsta30-Period200: [100.0, 3104.09, 66.81600000001522, 2650]', 'LoRaWAN-GW1-Nsta30-Period100: [99.27, 1592.9, 66.81599999987114, 4150]', 'LoRaWAN-GW1-Nsta40-Period300: [100.0, 4539.87, 66.816000000015, 1200]', 'LoRaWAN-GW1-Nsta40-Period200: [100.0, 3104.09, 66.81600000001569, 3200]', 'LoRaWAN-GW1-Nsta40-Period100: [98.95, 1592.83, 66.81599999979395, 5200]', 'LoRaWAN-GW1-Nsta50-Period300: [99.05, 4539.88, 66.8160000000154, 1250]', 'LoRaWAN-GW1-Nsta50-Period200: [98.77, 3104.09, 66.81599999993291, 3750]', 'LoRaWAN-GW1-Nsta50-Period100: [96.79, 1592.83, 66.81599999991373, 6250]', 'LoRaWAN-GW1-Nsta60-Period300: [99.89, 4540.44, 66.81600000001569, 1300]', 'LoRaWAN-GW1-Nsta60-Period200: [99.14, 3104.09, 66.81599999987114, 4300]', 'LoRaWAN-GW1-Nsta60-Period100: [97.97, 1592.9, 66.81600000000674, 7300]']

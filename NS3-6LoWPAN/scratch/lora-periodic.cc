@@ -64,6 +64,7 @@ main (int argc, char *argv[]) {
   int period = 60; //One packet per hour
   double distance = 500;
   std::string trafficType = "Unconfirmed";
+  double voltage = 3;
 
   bool energyRatio = true;
   bool successRate = false;
@@ -79,6 +80,7 @@ main (int argc, char *argv[]) {
   cmd.AddValue ("nGateways", "Number of gateways", nGateways);
   cmd.AddValue ("distance", "The distance of the area to simulate", distance);
   cmd.AddValue ("SF", "Fixed spreading factor", SF);
+  cmd.AddValue ("voltage", "voltage in Volts", voltage);
   cmd.AddValue ("codingRate", "Coding Rate", codingRate);
   cmd.AddValue ("mobileNodes", "Mobile nodes or not", mobileNodes);
   cmd.AddValue ("crc", "Cyclic Redundancy Check", crc);
@@ -287,7 +289,7 @@ main (int argc, char *argv[]) {
 
     // configure energy source
     basicSourceHelper.Set ("BasicEnergySourceInitialEnergyJ", DoubleValue (10000)); // Energy in Joules
-    basicSourceHelper.Set ("BasicEnergySupplyVoltageV", DoubleValue (3.3));
+    basicSourceHelper.Set ("BasicEnergySupplyVoltageV", DoubleValue (voltage));
 
     radioEnergyHelper.Set ("StandbyCurrentA", DoubleValue (0.0014)); // Idle mode
     radioEnergyHelper.Set ("TxCurrentA", DoubleValue (0.028));

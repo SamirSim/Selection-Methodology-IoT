@@ -60,31 +60,31 @@ def selection(attributes, I):
     #print("Coefficients ", coefficients)
     return coefficients
 
-number_gateways = [3, 4, 5]
-use_case = "surveillance-constraint"
+number_gateways = [1, 2]
+use_case = "grid-constraint"
 attributes = []
 metrics_weights = [0.2, 0.2, 0.2, 0.2]
 
-results = [ [100.0, 17.37, 0.23, 1050], [100.0, 20.77, 0.11, 1000], [100.0, 22.2, 0.16, 1100]]
-"""
-results = [ [100.0, 86.44, 0.06999999999999999, 225600], [100.0, 88.0, 0.06999999999999999, 225700], [100.0, 88.41, 0.06999999999999999, 225800],
-            [91.302, 296.784, 139.11, 51750], [100.0, 384.581, 52.01, 52750], [100.0, 414.242, 47.019999999999996, 53750], 
-            [86.8885, 93.853, 10.38, 201700], [97.1615, 124.439, 6.38, 151900], [99.5412, 141.785, 6.39, 127100]]
+#results = [ [100.0, 17.37, 0.23, 1050], [100.0, 20.77, 0.11, 1000], [100.0, 22.2, 0.16, 1100]]
 
-results = [ [7.6303, 238.236, 175.10999999999999, 151300], [33.5706, 311.211, 144.33, 112300], [86.7547, 333.471, 155.69, 103300],
-            [100.0, 4539.88, 66.8160000000129, 1100], [100.0, 4539.88, 66.81600000000876, 2100], [100.0, 4540.09, 66.8160000000032, 3100]]
+results = [ [100.0, 470.16, 51.73, 74000], [100.0, 471.135, 42.160000000000004, 75000],
+            [95.78, 2327.91, 82.17599999991153, 12000], [99.63, 2327.93, 82.17599999993269, 13000]]
+
+"""
+results = [ [98.0, 78.25, 0.06999999999999999, 3100], [100.0, 88.0, 0.06999999999999999, 2950],
+            [100.0, 351.158, 49.29, 2250], [100.0, 381.408, 49.230000000000004, 3250],
+            [83.5154, 92.2132, 8.17, 3950], [96.9462, 123.989, 6.32, 3400]]
 
 results = [ [100.0, 465.532, 13.07, 704000], [100.0, 465.968, 62.55, 705000], [100.0, 466.418, 67.25, 706000],
             [96.88, 3070.81, 82.17599999991859, 102000], [100.0, 3070.81, 82.17599999994684, 103000], [99.47, 3069.52, 82.17599999997593, 104000]]
 """
 
-technologies_configuration = ["WiFi-GW3", "WiFi-GW4", "WiFi-GW5"]
-#technologies_configuration = ["WiFi-GW1", "WiFi-GW2", "WiFi-GW3", "HaLow-GW1", "HaLow-GW2", "HaLow-GW3", "6LoWPAN-GW1", "6LoWPAN-GW2", "6LoWPAN-GW3"]
-#technologies_configuration = ["HaLow-GW1", "HaLow-GW2", "HaLow-GW3", "LoRaWAN-GW1", "LoRaWAN-GW2", "LoRaWAN-GW3"]
-#technologies_configuration = ["HaLow-GW1", "HaLow-GW2", "HaLow-GW3", "LoRaWAN-GW1", "LoRaWAN-GW2", "LoRaWAN-GW3"]
+#technologies_configuration = ["WiFi-GW3", "WiFi-GW4", "WiFi-GW5"]
+#technologies_configuration = ["WiFi-GW1", "WiFi-GW2", "HaLow-GW1", "HaLow-GW2", "6LoWPAN-GW1", "6LoWPAN-GW2"]
+technologies_configuration = ["HaLow-GW1", "HaLow-GW2", "LoRaWAN-GW1", "LoRaWAN-GW2"]
 
-constraint_latency = 10
-constraint_lifetime = 7
+constraint_latency = 1000
+constraint_lifetime = 365
 
 for elem in results:
     if elem[2] < constraint_latency:

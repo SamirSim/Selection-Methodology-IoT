@@ -1,0 +1,31 @@
+{'distance': 40, 'nb_devices': 50, 'traffic_direction': 'upstream', 'packet_size': 100, 'packet_period': 1, 'battery_capacity': 2400, 'mobile_nodes': 0, 'battery_voltage': 3, 'simulation_time': 500, 'radio_environment': 'indoor'}
+pruning applied on  LoRaWAN
+WiFi-GW1 [98.0, 78.25, 0.06999999999999999, 3100] 0.15
+WiFi-GW2 [100.0, 88.0, 0.06999999999999999, 2950] 0.17
+HaLow-GW1 [100.0, 351.158, 49.29, 2250] 0.92
+HaLow-GW2 [100.0, 381.408, 49.230000000000004, 3250] 0.85
+6LoWPAN-GW1 [83.5154, 92.2132, 8.17, 3950] 0.23
+6LoWPAN-GW2 [96.9462, 123.989, 6.32, 3400] 0.33
+Selection: The best technology is:  HaLow-GW1
+         group  Packet Delivery \n (%)  ...  Packet Latency \n (ms)  Cost \n ($)
+0     WiFi-GW1                0.082842  ...                 0.08165     0.079318
+1     WiFi-GW2                0.084532  ...                 0.08165     0.075480
+2    HaLow-GW1                0.084532  ...                 0.08165     0.057569
+3    HaLow-GW2                0.084532  ...                 0.08165     0.083156
+4  6LoWPAN-GW1                0.070598  ...                 0.08165     0.101066
+5  6LoWPAN-GW2                0.081951  ...                 0.08165     0.086994
+
+[6 rows x 5 columns]
+['802.11ah', '10', '0', '51200', '1', '1']
+['HaLow-GW1-Nsta60-Period1: [100.0, 303.723, 63.33, 2500]', 
+'HaLow-GW1-Nsta60-Period0.5: [59.1252, 260.161, 675.9399999999999, 2800]', 
+'HaLow-GW1-Nsta60-Period0.33: [38.7448, 259.677, 603.49, 2800]', 
+'HaLow-GW1-Nsta70-Period1: [100.0, 304.768, 105.66000000000001, 2750]', 
+'HaLow-GW1-Nsta70-Period0.5: [64.0771, 250.332, 595.88, 3100]', 
+'HaLow-GW1-Nsta70-Period0.33: [46.6884, 248.063, 572.52, 3100]', 
+'HaLow-GW1-Nsta80-Period1: [100.0, 293.66, 76.05000000000001, 3000]', 
+'HaLow-GW1-Nsta80-Period0.5: [67.2445, 234.348, 650.3100000000001, 3400]', 
+'HaLow-GW1-Nsta80-Period0.33: [52.0108, 226.472, 623.36, 3400]', 
+'HaLow-GW1-Nsta90-Period1: [99.0787, 289.903, 226.26, 3250]', 
+'HaLow-GW1-Nsta90-Period0.5: [71.7954, 231.315, 610.4399999999999, 3700]', 
+'HaLow-GW1-Nsta90-Period0.33: [53.1991, 218.868, 586.0699999999999, 3700]']

@@ -1,27 +1,27 @@
-{'distance': 30, 'nb_devices': 30, 'traffic_direction': 'upstream', 'packet_size': 1500, 'packet_period': 0.0057, 'battery_capacity': 2400, 'mobile_nodes': 0, 'battery_voltage': 3, 'simulation_time': 5, 'propagation_loss_model': 'Cost231PropagationLossModel'}
+{'distance': 30, 'nb_devices': 30, 'traffic_direction': 'upstream', 'packet_size': 1500, 'packet_period': 0.0057, 'battery_capacity': 2400, 'mobile_nodes': 0, 'battery_voltage': 3, 'simulation_time': 2.5, 'radio_environment': 'urban'}
 pruning applied on  802.11ah
 pruning applied on  LoRaWAN
 pruning applied on  6LoWPAN
-WiFi-GW3 [100.0, 17.37, 0.23, 1050] 0.16
-WiFi-GW4 [100.0, 20.77, 0.11, 1000] 0.73
-WiFi-GW5 [100.0, 22.2, 0.16, 1100] 0.72
-Selection: The best technology is:  WiFi-GW4
+WiFi-GW1 [89.57, 6.38, 0.64, 1750] 0.00
+WiFi-GW2 [100.0, 12.5, 0.23, 1100] 0.80
+WiFi-GW3 [100.0, 15.9, 0.21000000000000002, 1050] 1.00
+Selection: The best technology is:  WiFi-GW3
       group  Packet Delivery \n (%)  ...  Packet Latency \n (ms)  Cost \n ($)
-0  WiFi-GW3                 0.11547  ...                 0.11547     0.115383
-1  WiFi-GW4                 0.11547  ...                 0.11547     0.109888
-2  WiFi-GW5                 0.11547  ...                 0.11547     0.120877
+0  WiFi-GW1                0.133766  ...                0.144338     0.188707
+1  WiFi-GW2                0.149343  ...                0.144338     0.118616
+2  WiFi-GW3                0.149343  ...                0.144338     0.113224
 
 [3 rows x 5 columns]
-['WiFi', '10', '0', '1', '0', '4']
-['WiFi-GW4-Nsta40-Period0.0057: [100.0, 17.38, 0.24000000000000002, 1400]', 
-'WiFi-GW4-Nsta40-Period0.0038: [100.0, 12.8, 0.25, 1600]', 
-'WiFi-GW4-Nsta40-Period0.0028: [99.98, 9.78, 0.35, 2000]', 
-'WiFi-GW4-Nsta50-Period0.0057: [100.0, 15.63, 0.27999999999999997, 1650]', 
-'WiFi-GW4-Nsta50-Period0.0038: [100.0, 11.5, 0.32, 2150]', 
-'WiFi-GW4-Nsta50-Period0.0028: [99.99, 8.79, 0.34, 2400]', 
-'WiFi-GW4-Nsta60-Period0.0057: [100.0, 13.41, 0.22, 2200]', 
-'WiFi-GW4-Nsta60-Period0.0038: [100.0, 9.85, 0.25, 2800]', 
-'WiFi-GW4-Nsta60-Period0.0028: [81.69, 7.18, 0.5900000000000001, 3400]', 
-'WiFi-GW4-Nsta70-Period0.0057: [100.0, 12.67, 0.3, 2500]', 
-'WiFi-GW4-Nsta70-Period0.0038: [99.99, 8.96, 0.33, 3200]', 
-'WiFi-GW4-Nsta70-Period0.0028: [48.3, 6.08, 1.1199999999999999, 4250]']
+['WiFi', '10', '0', '1', '0', '3']
+['WiFi-GW3-Nsta40-Period0.0057: [100.0, 13.85, 0.16, 1500]', 
+'WiFi-GW3-Nsta40-Period0.0038: [99.99, 10.14, 0.19, 1700]', 
+'WiFi-GW3-Nsta40-Period0.0028: [99.97, 7.81, 0.35, 2100]', 
+'WiFi-GW3-Nsta50-Period0.0057: [100.0, 12.2, 0.33, 1800]', 
+'WiFi-GW3-Nsta50-Period0.0038: [99.99, 8.73, 0.32, 2300]', 
+'WiFi-GW3-Nsta50-Period0.0028: [89.66, 6.9, 0.53, 2800]', 
+'WiFi-GW3-Nsta60-Period0.0057: [100.0, 10.63, 0.2, 2400]', 
+'WiFi-GW3-Nsta60-Period0.0038: [98.28, 6.97, 0.45, 3300]', 
+'WiFi-GW3-Nsta60-Period0.0028: [52.41, 5.65, 0.55, 3900]', 
+'WiFi-GW3-Nsta70-Period0.0057: [99.99, 9.38, 0.23, 3100]', 
+'WiFi-GW3-Nsta70-Period0.0038: [66.08, 6.15, 0.44, 4150]', 
+'WiFi-GW3-Nsta70-Period0.0028: [35.11, 5.89, 0.74, 4500]']
