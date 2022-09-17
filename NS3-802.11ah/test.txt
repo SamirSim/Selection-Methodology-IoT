@@ -1,0 +1,1331 @@
+,,m_wifiPhy->GetChannelWidth () 42
+>>m_wifiPhy->GetChannelWidth () 4
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:0d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:58, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:e2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:8b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:26, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:9d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:9e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:24, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:d0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:23, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:16, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:96, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:fc, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:8a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:17, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:78, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:ee, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:a1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:29, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:c4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:7f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:1a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:81, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:b0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:b3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:e3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:1f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:13, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:80, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:89, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:28, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:ef, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:1e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:14, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:f6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:21, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:36, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:09, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:90, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:64, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:e7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:77, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:39, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:51, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:0f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:0b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:94, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:12, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:0a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:8c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:20, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:fb, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:8e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:60, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:bb, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:6e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:25, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:6f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:54, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:5a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:37, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:5e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:5b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:11, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:32, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:3b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:6d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:2c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:30, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:2a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:27, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:65, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:e5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:9c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:e4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:76, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:b4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:16, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:07, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:06, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:0a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ab, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:00, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:62, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:2b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ff, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:14, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:3f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:4d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:73, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:0c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:05, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:57, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:52, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:ea, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:17, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:88, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:15, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:91, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:44, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:9f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:07, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:d6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:b5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:08, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:bd, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:2a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:4c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:dc, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:31, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:da, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ed, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:45, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:1d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:7a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:25, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:1b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:50, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:e0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:12, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:22, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:2d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:1c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:b6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:a5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:1c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:05, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:08, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:10, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:46, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:63, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:d9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:74, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:fa, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:2c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:06, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:41, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:0c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:55, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:c1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:7d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:27, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:1b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:28, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:98, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:f2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:40, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:d5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:18, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:6c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:3d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:e9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ba, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:cd, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:cf, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:03, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:61, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:33, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:84, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:8d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:34, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:b1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:4a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:69, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:86, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:24, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ce, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:04, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:42, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:a8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ac, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ad, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:11, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:e8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:d2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:82, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:59, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:38, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:29, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:53, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:d7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:1d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:c8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:b7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:13, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:2f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:21, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:e6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:bf, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ec, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:af, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:18, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:72, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:d4, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:f0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:d1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:bc, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c0, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c5, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:49, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:04, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:7b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:47, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:0d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:b8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:b2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:6b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:a6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:5d, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:ca, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:be, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:dd, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:1a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:db, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c6, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:99, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:0b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:9b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:cb, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:70, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:56, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:aa, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:4e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:3a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:35, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:75, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:10, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:66, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:97, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:fe, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:3e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:6a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:e1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:0e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:df, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:eb, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:7c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:01, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:1e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:a2, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:02, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:67, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:92, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:79, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:d3, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:5c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:2e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:26, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:19, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:02, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:8f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:19, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:d8, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:71, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:95, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:b9, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:2b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:87, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:9a, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:cc, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:20, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:f1, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:3c, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:1f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:c7, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:43, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:7e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:fd, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:03, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:0e, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:01:15, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:93, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:de, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:23, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:0f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:ae, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:83, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:01, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:09, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:22, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:68, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:4b, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:85, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:00:5f, receive 0
+,,m_wifiPhy->GetChannelWidth () 22
+,,m_wifiPhy->GetChannelWidth () 22
+00:00:00:00:01:2d GetSupportedRates 
+00:00:00:00:00:48, receive 0
+,,m_wifiPhy->GetChannelWidth () 22

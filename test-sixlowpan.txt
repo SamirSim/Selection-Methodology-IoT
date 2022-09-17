@@ -1,0 +1,12 @@
+{'distance': 40, 'nb_devices': 50, 'traffic_direction': 'upstream', 'packet_size': 100, 'packet_period': 1, 'battery_capacity': 2400, 'mobile_nodes': 0, 'battery_voltage': 3, 'simulation_time': 500, 'radio_environment': 'indoor'}
+[[98.2353, 141.974, 100, 3350]]
+[[98.2353, 141.974, 100, 3350]]
+[[98.2353, 141.974, 100, 3350]]
+[[98.2353, 141.974, 100, 3350]]
+6LoWPAN-GW3 [98.2353, 141.974, 17.28, 3350] 1.00
+Selection: The best technology is:  6LoWPAN-GW3
+         group  Packet Delivery \n (%)  ...  Packet Latency \n (ms)  Cost \n ($)
+0  6LoWPAN-GW3                    0.25  ...                    0.25         0.25
+
+[1 rows x 5 columns]
+['6LoWPAN', '4', '5', '3', '4', '3']

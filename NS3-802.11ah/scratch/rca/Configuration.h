@@ -59,23 +59,23 @@ struct Configuration {
 	/*
 	 * Common configuration parameters
 	 * */
-	double simulationTime = 100; //60
+	double simulationTime = 200; //60
 	uint32_t seed = 1;
 	int NRawSta;
-	uint32_t Nsta = 20;
+	uint32_t Nsta = 5;
 	uint32_t nGW = 1;
-	uint32_t BeaconInterval = 102400;
+	uint32_t BeaconInterval = 51200;
 	uint32_t batteryCapacity = 5200;
 	uint32_t voltage = 12;
 
 	string datarate = "1";
 	string bandWidth = "2";
-	double rho=50; //50
-	bool mobileNodes = true;
+	double rho=180; //50
+	bool mobileNodes = false;
 	int sgi=0;
-	string mcs="10"; 
+	string mcs="0"; 
 	int agregation = 0;
-	string radioEnvironment="urban";
+	string radioEnvironment="indoor";
 
 	double totaltraffic = 2;
 

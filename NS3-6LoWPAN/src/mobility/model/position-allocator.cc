@@ -418,6 +418,8 @@ RandomBoxPositionAllocator::GetNext (void) const
   double x = m_x->GetValue ();
   double y = m_y->GetValue ();
   double z = m_z->GetValue ();
+
+  //std::cout << x << " " << y << " " << z << std::endl;
   return Vector (x, y, z);
 }
 

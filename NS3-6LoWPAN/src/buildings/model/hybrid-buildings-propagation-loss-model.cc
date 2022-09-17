@@ -142,6 +142,7 @@ HybridBuildingsPropagationLossModel::SetRooftopHeight (double rooftopHeight)
 double
 HybridBuildingsPropagationLossModel::GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const
 {
+  //std::cout << "Frequency: " << m_frequency << std::endl;
   NS_ASSERT_MSG ((a->GetPosition ().z >= 0) && (b->GetPosition ().z >= 0), "HybridBuildingsPropagationLossModel does not support underground nodes (placed at z < 0)");
 
   

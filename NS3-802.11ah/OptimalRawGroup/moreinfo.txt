@@ -1,2 +1,2 @@
 Sta node#,distance,timerx(notassociated),timeidle(notassociated),timetx(notassociated),timesleep(notassociated),timecollision(notassociated)
-0,0,1015.81,(0.81744),14472.3,(1.33419),22.4348,(0.00936),14490.6,(0),0.590208,(0.0914036)
+0,0,0.50208,(0.13312),6.20686,(0.8971),0.01324,(0.00936),6.21745,(0),0.000720364,(1.3e-07)

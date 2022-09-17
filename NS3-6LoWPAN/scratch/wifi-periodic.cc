@@ -50,13 +50,13 @@ NS_LOG_COMPONENT_DEFINE ("wifi-periodic");
  }
 
 int main (int argc, char *argv[]) {
-  SeedManager::SetSeed (3);  // Changes seed from default of 1 to 3
-  SeedManager::SetRun (7);  // Changes run number from default of 1 to 7
+  //SeedManager::SetSeed (3);  // Changes seed from default of 1 to 3
+  //SeedManager::SetRun (7);  // Changes run number from default of 1 to 7
   /*/ Input parameters definition /*/
   // Seconds
-  double simulationTime = 1; 
+  double simulationTime = 10; 
   // Number of stations
-  int nWifi = 5; 
+  int nWifi = 20; 
   // Number of gatewyas
   int nGW = 1; 
   // Modulation and Coding Scheme
@@ -66,9 +66,9 @@ int main (int argc, char *argv[]) {
   // Traffic direction
   std::string trafficDirection = "upstream"; 
   // Payload size in bytes
-  int payloadSize = 1500; 
+  int payloadSize = 100; 
   // Packet period in seconds
-  std::string period = "0.005"; 
+  std::string period = "1"; 
   // Meters between AP and stations
   double distance = 10.0; 
   // Allow or not the packet agregation
@@ -76,13 +76,13 @@ int main (int argc, char *argv[]) {
   // BW Channel Width in MHz
   int channelWidth = 80; 
   // Indicates whether Short Guard Interval is enabled or not
-  int sgi = 0; 
+  int sgi = 1; 
   // Delay propagation model
   std::string propDelay = "ConstantSpeedPropagationDelayModel";
   // Radion environment
   std::string radioEnvironment = "urban";
   // Number of spatial streams 
-  int spatialStreams = 3; 
+  int spatialStreams = 1; 
   // Tx current draw in mA
   double txCurrent = 107;
   // Rx current draw in mA
@@ -102,10 +102,6 @@ int main (int argc, char *argv[]) {
   bool hiddenStations = false;
 
   //Energy parameters
-  double tx = 0.52;  // in W
-  double rx = 0.16;  // in W
-  double txFactor = 0.93; // in mJ
-  double rxFactor = 0.93; // in mJ
   double voltage = 12; // in W
   double batteryCap = 5200; // Battery capacity in mAh
 
@@ -158,12 +154,17 @@ int main (int argc, char *argv[]) {
 
   YansWifiChannelHelper channel;
   std::string propLoss;
+
   if (radioEnvironment == "urban") propLoss = "Cost231PropagationLossModel";
   else if (radioEnvironment == "suburban") propLoss = "LogDistancePropagationLossModel";
   else if (radioEnvironment == "rural") propLoss = "OkumuraHataPropagationLossModel";
   else if (radioEnvironment == "indoor") propLoss = "HybridBuildingsPropagationLossModel";
 
-  channel.AddPropagationLoss ("ns3::"+propLoss);
+  double frequency = 2.4e9; 
+  if (radioEnvironment == "urban") channel.AddPropagationLoss("ns3::"+propLoss, "Frequency", DoubleValue(frequency), "Lambda", DoubleValue(300000000.0/frequency));
+  else if (radioEnvironment == "suburban") channel.AddPropagationLoss ("ns3::"+propLoss);
+  else channel.AddPropagationLoss ("ns3::"+propLoss, "Frequency", DoubleValue(frequency));
+  //channel.AddPropagationLoss("ns3::"+propLoss);
   channel.SetPropagationDelay("ns3::"+propDelay);
 
   /*/ Nodes creation and placement /*/
@@ -209,68 +210,76 @@ int main (int argc, char *argv[]) {
     mobility.Install (wifiStaNodes);
   }
   else {
-    /*/ Positioning Nodes /*/
-    /*
-    for (uint32_t i = 0; i < nWifi; i++) {
-        positionAlloc->Add (Vector (distance, 0.0, 0.0));
-    }
-
-    mobility.SetPositionAllocator (positionAlloc);
-    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    mobility.Install (wifiStaNodes);
-
-    Ptr<ListPositionAllocator> positionAp = CreateObject<ListPositionAllocator> ();
-    positionAp->Add (Vector (0.0, 0.0, 0.0));
-    mobility.SetPositionAllocator (positionAp);
-    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    mobility.Install (wifiApNode);
-
-    if (latency) {
-      positionAp->Add (Vector (distance, 0.0, 0.0));
-      mobility.SetPositionAllocator (positionAp);
-      mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-      mobility.Install (wifiProbingNode);
-    }
-    */
-    mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
-                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
-    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    mobility.Install(wifiStaNodes);
-
-    MobilityHelper mobilityAp;
-    Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
-    positionAlloc->Add (Vector (0, 0, 1));
-    mobilityAp.SetPositionAllocator (positionAlloc);
-    mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-    mobilityAp.Install(wifiApNode);
-
     if (radioEnvironment == "indoor") {
       double x_min = 0.0;
-      double x_max = 10.0;
+      double x_max = 20.0;
       double y_min = 0.0;
-      double y_max = 20.0;
+      double y_max = 10.0;
       double z_min = 0.0;
-      double z_max = 10.0;
+      double z_max = 50.0;
+
+      double _x_max = x_max / nGW;
+      double _y_max = y_max / nGW;
+      double _z_max = z_max / nGW;
+
+      std::string m_x = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_x_max)+"]";
+      std::string m_y = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_y_max)+"]";
+      std::string m_z = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_z_max)+"]";
+
+      mobility.SetPositionAllocator ("ns3::RandomBoxPositionAllocator", "X", StringValue (m_x),
+                                    "Y", StringValue (m_y), "Z", StringValue (m_z));
+      mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+      mobility.Install(wifiStaNodes);
+
+      MobilityHelper mobilityAp;
+      Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+      positionAlloc->Add (Vector (_x_max/2, _y_max/2, _z_max/2));
+      mobilityAp.SetPositionAllocator (positionAlloc);
+      mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+      mobilityAp.Install(wifiApNode);
+
+      std::cout << z_max << std::endl;
+      //double z_max = 50.0;
       Ptr<Building> b = CreateObject <Building> ();
       b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
       b->SetBuildingType (Building::Residential);
       b->SetExtWallsType (Building::ConcreteWithWindows);
-      b->SetNFloors (3);
+      b->SetNFloors (16);
       b->SetNRoomsX (3);
       b->SetNRoomsY (2);
 
       BuildingsHelper::Install (wifiStaNodes);
       
       BuildingsHelper::Install (wifiApNode);
-    }
 
-    if (latency) {
-      positionAlloc->Add (Vector (distance, 0, 1));
-      mobility.SetPositionAllocator (positionAlloc);
-      mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-      mobility.Install (wifiProbingNode);
-      if (radioEnvironment == "indoor") BuildingsHelper::Install (wifiProbingNode);
+      if (latency) {
+        positionAlloc->Add (Vector (x_max/2 + 1, y_max/2, z_max/2));
+        mobility.SetPositionAllocator (positionAlloc);
+        mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+        mobility.Install (wifiProbingNode);
+        BuildingsHelper::Install (wifiProbingNode);
+      }
     }
+    else {
+      mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
+                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
+      mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+      mobility.Install(wifiStaNodes);
+
+      MobilityHelper mobilityAp;
+      Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+      positionAlloc->Add (Vector (0, 0, 1));
+      mobilityAp.SetPositionAllocator (positionAlloc);
+      mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+      mobilityAp.Install(wifiApNode);
+
+      if (latency) {
+        positionAlloc->Add (Vector (distance, 0, 1));
+        mobility.SetPositionAllocator (positionAlloc);
+        mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+        mobility.Install (wifiProbingNode);
+      }
+    }  
   }
   /* Layers installation */
   YansWifiPhyHelper phy;
@@ -352,7 +361,7 @@ int main (int argc, char *argv[]) {
     // UDP Echo Server application to be installed in the AP
     int echoPort = 11;
     UdpEchoServerHelper echoServer(echoPort); // Port # 9
-    uint32_t payloadSizeEcho = 1023; //Packet size for Echo UDP App
+    uint32_t payloadSizeEcho = 100; //Packet size for Echo UDP App
 
     if (trafficDirection == "upstream") {
       ApplicationContainer serverApps = echoServer.Install(wifiApNode);
@@ -364,7 +373,7 @@ int main (int argc, char *argv[]) {
       UdpEchoClientHelper echoClient1(ApInterface.GetAddress(0), echoPort);
       
       echoClient1.SetAttribute("MaxPackets", UintegerValue(10000));
-      echoClient1.SetAttribute("Interval", TimeValue(Seconds(0.05)));
+      echoClient1.SetAttribute("Interval", TimeValue(Seconds(0.1)));
       echoClient1.SetAttribute("PacketSize", UintegerValue(payloadSizeEcho));
 
       ApplicationContainer clientApp = echoClient1.Install(wifiProbingNode);
@@ -419,9 +428,9 @@ int main (int argc, char *argv[]) {
   /*/ Setting traffic applications /*/
   ApplicationContainer sourceApplications, sinkApplications;
   uint32_t portNumber = 9;
-  double min = 0.5;
-  double max = 1.0;
   double periodSeconds = std::stof(period);
+  double min = 0.5;
+  double max = periodSeconds;
 
   if (trafficDirection == "upstream") {
     auto ipv4 = wifiApNode.Get (0)->GetObject<Ipv4> ();
@@ -550,24 +559,22 @@ int main (int argc, char *argv[]) {
   std::cout << std::fixed;
   std::cout << std::setprecision(2);
   
+  double max_energy = 0, max_battery_lifetime = 999999;
   /*/ Gatherting KPIs /*/
   if (energyRatio || energyPower) {
-    /*/ Calculating Energy KPIs /*/
-    double energy = 0, battery_lifetime = 0;
+    /*/ Calculating Energy KPIs /*/ 
     DeviceEnergyModelContainer::Iterator iter ;
     for (iter = deviceModels.Begin (); iter != deviceModels.End (); iter ++) {
-      double energyConsumed = (*iter)->GetTotalEnergyConsumption ();
-      NS_LOG_UNCOND ("End of simulation (" << Simulator::Now ().GetSeconds ()
-                    << "s) Total energy consumed by radio (Station) = " 
-                    << energyConsumed << "J");
-      std::cout << "Total energy consumed by radio (Station): " 
-                << energyConsumed << std::endl;
-      battery_lifetime = ((capacityJoules / energyConsumed) * simulationTime);
+      double energyConsumed = (*iter)->GetTotalEnergyConsumption (); 
+      max_energy = std::max(energyConsumed, max_energy);
+
+      double battery_lifetime = ((capacityJoules / energyConsumed) * simulationTime);
       battery_lifetime = battery_lifetime / 86400; // Days
-      std::cout << "Battery lifetime: " << battery_lifetime << std::endl;
-      energy = energyConsumed;
-      break; // Energy in only one station
+      max_battery_lifetime = std::min(battery_lifetime, max_battery_lifetime);      
+      //break; // Energy in only one station
     }
+    std::cout << "Total energy consumed by radio (Station): " << max_energy << std::endl;
+    std::cout << "Battery lifetime: " << max_battery_lifetime << std::endl;
   }
 
   double totalPacketsThrough = 0, throughput = 0;

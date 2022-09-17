@@ -42,13 +42,14 @@ def selection(attributes, I):
                 worst_value = max(worst_value, attributes[i][j])
         best_solution.append(best_value)
         worst_solution.append(worst_value)
-
+    #print(best_solution, worst_solution)
     distances_from_best = []
     distances_from_worst = []
     for i in range(len(attributes)):
+        print(attributes[i])
         distances_from_best.append(dist(attributes[i], best_solution))
         distances_from_worst.append(dist(attributes[i], worst_solution))
-
+    #print(distances_from_best, distances_from_worst)
     coefficients = []
     for i in range(len(attributes)):
         if (distances_from_worst[i] + distances_from_best[i] == 0):
@@ -57,40 +58,46 @@ def selection(attributes, I):
             coefficient = distances_from_worst[i] / (distances_from_worst[i] + distances_from_best[i])
         coefficients.append(coefficient)
 
-    #print("Coefficients ", coefficients)
+    print("Coefficients ", coefficients)
     return coefficients
 
 number_gateways = [1, 2]
-use_case = "grid-constraint"
+use_case = "building-constraint"
 attributes = []
-metrics_weights = [0.2, 0.2, 0.2, 0.2]
+metrics_weights = [0.25, 0.25, 0.25, 0.25]
 
-#results = [ [100.0, 17.37, 0.23, 1050], [100.0, 20.77, 0.11, 1000], [100.0, 22.2, 0.16, 1100]]
+#results = [ [89.57, 6.38, 0.64, 1750], [100.0, 12.54, 0.23, 1100], [100.0, 15.98, 0.21, 1050]]
 
-results = [ [100.0, 470.16, 51.73, 74000], [100.0, 471.135, 42.160000000000004, 75000],
-            [95.78, 2327.91, 82.17599999991153, 12000], [99.63, 2327.93, 82.17599999993269, 13000]]
+#results = [ [100.0, 470.16, 51.73, 74000], [100.0, 471.135, 42.160000000000004, 75000],
+#            [95.78, 2327.91, 82.17599999991153, 12000], [99.63, 2327.93, 82.17599999993269, 13000]] 
 
+results = [ #[98.0, 76.85, 0.06999999999999999, 3100], 
+            [100.0, 86.07, 0.06999999999999999, 2950],
+            [100.0, 86.49, 0.06999999999999999, 3050],
+            #  [100.0, 86.67, 0.06999999999999999, 3150],
+            [100.0, 351.15, 49.29, 2250], [100.0, 381.408, 49.230000000000004, 3250],
+            #[83.5154, 92.2132, 8.17, 3950], 
+            [96.9462, 123.989, 6.32, 3400], [98.23, 141.97, 6.32, 3350]]
 """
-results = [ [98.0, 78.25, 0.06999999999999999, 3100], [100.0, 88.0, 0.06999999999999999, 2950],
-            [100.0, 351.158, 49.29, 2250], [100.0, 381.408, 49.230000000000004, 3250],
-            [83.5154, 92.2132, 8.17, 3950], [96.9462, 123.989, 6.32, 3400]]
-
-results = [ [100.0, 465.532, 13.07, 704000], [100.0, 465.968, 62.55, 705000], [100.0, 466.418, 67.25, 706000],
-            [96.88, 3070.81, 82.17599999991859, 102000], [100.0, 3070.81, 82.17599999994684, 103000], [99.47, 3069.52, 82.17599999997593, 104000]]
+results = [ [100.0, 470.16, 51.73, 74000], [100.0, 471.13, 42.16, 75000], 
+            [95.78, 2327.81, 82.17599999991859, 12000], [99.63, 2327.81, 82.17599999994684, 13000]]
 """
 
-#technologies_configuration = ["WiFi-GW3", "WiFi-GW4", "WiFi-GW5"]
-#technologies_configuration = ["WiFi-GW1", "WiFi-GW2", "HaLow-GW1", "HaLow-GW2", "6LoWPAN-GW1", "6LoWPAN-GW2"]
-technologies_configuration = ["HaLow-GW1", "HaLow-GW2", "LoRaWAN-GW1", "LoRaWAN-GW2"]
+#technologies_configuration = ["WiFi-GW1", "WiFi-GW2", "WiFi-GW3"]
+technologies_configuration = ["WiFi-GW2", "WiFi-GW3", "HaLow-GW1", "HaLow-GW2", "6LoWPAN-GW2", "6LoWPAN-GW3"]
+#technologies_configuration = ["HaLow-GW1", "HaLow-GW2", "LoRaWAN-GW1", "LoRaWAN-GW2"]
 
-constraint_latency = 1000
-constraint_lifetime = 365
+constraint_latency = 100
+constraint_lifetime = 90
+constraint_delivery = 90
 
 for elem in results:
     if elem[2] < constraint_latency:
         elem[2] = constraint_latency
     if elem[1] < constraint_lifetime:
         elem[1] = 0.1
+    if elem[0] < constraint_delivery:
+        elem[0] = 0.1
 
 normalized = normalize(results)
 weighted = weight(normalized, metrics_weights)
@@ -99,6 +106,12 @@ max_delivery = 0
 max_lifetime = 0
 min_latency = 0
 min_cost = 0
+
+I = [1, 1, 0, 0]
+result = selection(weighted, I)
+
+for i in range(len(result)):
+    print(technologies_configuration[i], results[i], result[i])
 
 for elem in weighted:
     elem[2] = 1 / elem[2]
@@ -117,8 +130,6 @@ for elem in weighted:
     elem[1] = elem[1] / max_lifetime
     elem[2] = elem[2] / min_latency
     elem[3] = elem[3] / min_cost
-
-print(weighted)
 
 results = list(map(list, zip(*weighted)))
 

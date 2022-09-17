@@ -169,7 +169,7 @@ IdealWifiManager::DoGetDataTxVector (WifiRemoteStation *st, uint32_t size)
           maxMode = mode;
         }
     }
-    std::cout << "MODE: " << maxMode << std::endl;
+    //std::cout << "MODE: " << maxMode << std::endl;
   return WifiTxVector (maxMode, GetDefaultTxPowerLevel (), GetLongRetryCount (station), GetShortGuardInterval (station), Min (GetNumberOfReceiveAntennas (station), GetNumberOfTransmitAntennas ()), GetNess (station), GetStbc (station));
 }
 

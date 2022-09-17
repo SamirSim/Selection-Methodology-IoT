@@ -70,7 +70,7 @@ HybridBuildingsPropagationLossModel::GetTypeId (void)
     
     .AddAttribute ("Frequency",
                    "The Frequency  (default is 2.106 GHz).",
-                   DoubleValue (2160e6),
+                   DoubleValue (861e6),
                    MakeDoubleAccessor (&HybridBuildingsPropagationLossModel::SetFrequency),
                    MakeDoubleChecker<double> ())
 
@@ -143,7 +143,6 @@ double
 HybridBuildingsPropagationLossModel::GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const
 {
   NS_ASSERT_MSG ((a->GetPosition ().z >= 0) && (b->GetPosition ().z >= 0), "HybridBuildingsPropagationLossModel does not support underground nodes (placed at z < 0)");
-
   
   double distance = a->GetDistanceFrom (b);
 

@@ -1,11 +1,9 @@
 Waf: Entering directory `/home/lip/Bureau/Selection-Methodology-IoT/NS3-802.11ah/build'
-[ 857/1772] Compiling scratch/rca/s1g-rca.cc
-[1761/1772] Linking build/scratch/rca/rca
 Waf: Leaving directory `/home/lip/Bureau/Selection-Methodology-IoT/NS3-802.11ah/build'
 Build commands will be stored in build/compile_commands.json
-'build' finished successfully (6.880s)
-Nsta = 10 1
-POS: x=6, y=1, z=0,0
+'build' finished successfully (0.755s)
+Nsta = 300 1
+MCS2_2
 Populating routing tables...
 Populating ARP cache...
 Arp Cache: Adding the pair (00:00:00:00:00:01,192.168.0.1)
@@ -19,53 +17,598 @@ Arp Cache: Adding the pair (00:00:00:00:00:08,192.168.0.8)
 Arp Cache: Adding the pair (00:00:00:00:00:09,192.168.0.9)
 Arp Cache: Adding the pair (00:00:00:00:00:0a,192.168.0.10)
 Arp Cache: Adding the pair (00:00:00:00:00:0b,192.168.0.11)
+Arp Cache: Adding the pair (00:00:00:00:00:0c,192.168.0.12)
+Arp Cache: Adding the pair (00:00:00:00:00:0d,192.168.0.13)
+Arp Cache: Adding the pair (00:00:00:00:00:0e,192.168.0.14)
+Arp Cache: Adding the pair (00:00:00:00:00:0f,192.168.0.15)
+Arp Cache: Adding the pair (00:00:00:00:00:10,192.168.0.16)
+Arp Cache: Adding the pair (00:00:00:00:00:11,192.168.0.17)
+Arp Cache: Adding the pair (00:00:00:00:00:12,192.168.0.18)
+Arp Cache: Adding the pair (00:00:00:00:00:13,192.168.0.19)
+Arp Cache: Adding the pair (00:00:00:00:00:14,192.168.0.20)
+Arp Cache: Adding the pair (00:00:00:00:00:15,192.168.0.21)
+Arp Cache: Adding the pair (00:00:00:00:00:16,192.168.0.22)
+Arp Cache: Adding the pair (00:00:00:00:00:17,192.168.0.23)
+Arp Cache: Adding the pair (00:00:00:00:00:18,192.168.0.24)
+Arp Cache: Adding the pair (00:00:00:00:00:19,192.168.0.25)
+Arp Cache: Adding the pair (00:00:00:00:00:1a,192.168.0.26)
+Arp Cache: Adding the pair (00:00:00:00:00:1b,192.168.0.27)
+Arp Cache: Adding the pair (00:00:00:00:00:1c,192.168.0.28)
+Arp Cache: Adding the pair (00:00:00:00:00:1d,192.168.0.29)
+Arp Cache: Adding the pair (00:00:00:00:00:1e,192.168.0.30)
+Arp Cache: Adding the pair (00:00:00:00:00:1f,192.168.0.31)
+Arp Cache: Adding the pair (00:00:00:00:00:20,192.168.0.32)
+Arp Cache: Adding the pair (00:00:00:00:00:21,192.168.0.33)
+Arp Cache: Adding the pair (00:00:00:00:00:22,192.168.0.34)
+Arp Cache: Adding the pair (00:00:00:00:00:23,192.168.0.35)
+Arp Cache: Adding the pair (00:00:00:00:00:24,192.168.0.36)
+Arp Cache: Adding the pair (00:00:00:00:00:25,192.168.0.37)
+Arp Cache: Adding the pair (00:00:00:00:00:26,192.168.0.38)
+Arp Cache: Adding the pair (00:00:00:00:00:27,192.168.0.39)
+Arp Cache: Adding the pair (00:00:00:00:00:28,192.168.0.40)
+Arp Cache: Adding the pair (00:00:00:00:00:29,192.168.0.41)
+Arp Cache: Adding the pair (00:00:00:00:00:2a,192.168.0.42)
+Arp Cache: Adding the pair (00:00:00:00:00:2b,192.168.0.43)
+Arp Cache: Adding the pair (00:00:00:00:00:2c,192.168.0.44)
+Arp Cache: Adding the pair (00:00:00:00:00:2d,192.168.0.45)
+Arp Cache: Adding the pair (00:00:00:00:00:2e,192.168.0.46)
+Arp Cache: Adding the pair (00:00:00:00:00:2f,192.168.0.47)
+Arp Cache: Adding the pair (00:00:00:00:00:30,192.168.0.48)
+Arp Cache: Adding the pair (00:00:00:00:00:31,192.168.0.49)
+Arp Cache: Adding the pair (00:00:00:00:00:32,192.168.0.50)
+Arp Cache: Adding the pair (00:00:00:00:00:33,192.168.0.51)
+Arp Cache: Adding the pair (00:00:00:00:00:34,192.168.0.52)
+Arp Cache: Adding the pair (00:00:00:00:00:35,192.168.0.53)
+Arp Cache: Adding the pair (00:00:00:00:00:36,192.168.0.54)
+Arp Cache: Adding the pair (00:00:00:00:00:37,192.168.0.55)
+Arp Cache: Adding the pair (00:00:00:00:00:38,192.168.0.56)
+Arp Cache: Adding the pair (00:00:00:00:00:39,192.168.0.57)
+Arp Cache: Adding the pair (00:00:00:00:00:3a,192.168.0.58)
+Arp Cache: Adding the pair (00:00:00:00:00:3b,192.168.0.59)
+Arp Cache: Adding the pair (00:00:00:00:00:3c,192.168.0.60)
+Arp Cache: Adding the pair (00:00:00:00:00:3d,192.168.0.61)
+Arp Cache: Adding the pair (00:00:00:00:00:3e,192.168.0.62)
+Arp Cache: Adding the pair (00:00:00:00:00:3f,192.168.0.63)
+Arp Cache: Adding the pair (00:00:00:00:00:40,192.168.0.64)
+Arp Cache: Adding the pair (00:00:00:00:00:41,192.168.0.65)
+Arp Cache: Adding the pair (00:00:00:00:00:42,192.168.0.66)
+Arp Cache: Adding the pair (00:00:00:00:00:43,192.168.0.67)
+Arp Cache: Adding the pair (00:00:00:00:00:44,192.168.0.68)
+Arp Cache: Adding the pair (00:00:00:00:00:45,192.168.0.69)
+Arp Cache: Adding the pair (00:00:00:00:00:46,192.168.0.70)
+Arp Cache: Adding the pair (00:00:00:00:00:47,192.168.0.71)
+Arp Cache: Adding the pair (00:00:00:00:00:48,192.168.0.72)
+Arp Cache: Adding the pair (00:00:00:00:00:49,192.168.0.73)
+Arp Cache: Adding the pair (00:00:00:00:00:4a,192.168.0.74)
+Arp Cache: Adding the pair (00:00:00:00:00:4b,192.168.0.75)
+Arp Cache: Adding the pair (00:00:00:00:00:4c,192.168.0.76)
+Arp Cache: Adding the pair (00:00:00:00:00:4d,192.168.0.77)
+Arp Cache: Adding the pair (00:00:00:00:00:4e,192.168.0.78)
+Arp Cache: Adding the pair (00:00:00:00:00:4f,192.168.0.79)
+Arp Cache: Adding the pair (00:00:00:00:00:50,192.168.0.80)
+Arp Cache: Adding the pair (00:00:00:00:00:51,192.168.0.81)
+Arp Cache: Adding the pair (00:00:00:00:00:52,192.168.0.82)
+Arp Cache: Adding the pair (00:00:00:00:00:53,192.168.0.83)
+Arp Cache: Adding the pair (00:00:00:00:00:54,192.168.0.84)
+Arp Cache: Adding the pair (00:00:00:00:00:55,192.168.0.85)
+Arp Cache: Adding the pair (00:00:00:00:00:56,192.168.0.86)
+Arp Cache: Adding the pair (00:00:00:00:00:57,192.168.0.87)
+Arp Cache: Adding the pair (00:00:00:00:00:58,192.168.0.88)
+Arp Cache: Adding the pair (00:00:00:00:00:59,192.168.0.89)
+Arp Cache: Adding the pair (00:00:00:00:00:5a,192.168.0.90)
+Arp Cache: Adding the pair (00:00:00:00:00:5b,192.168.0.91)
+Arp Cache: Adding the pair (00:00:00:00:00:5c,192.168.0.92)
+Arp Cache: Adding the pair (00:00:00:00:00:5d,192.168.0.93)
+Arp Cache: Adding the pair (00:00:00:00:00:5e,192.168.0.94)
+Arp Cache: Adding the pair (00:00:00:00:00:5f,192.168.0.95)
+Arp Cache: Adding the pair (00:00:00:00:00:60,192.168.0.96)
+Arp Cache: Adding the pair (00:00:00:00:00:61,192.168.0.97)
+Arp Cache: Adding the pair (00:00:00:00:00:62,192.168.0.98)
+Arp Cache: Adding the pair (00:00:00:00:00:63,192.168.0.99)
+Arp Cache: Adding the pair (00:00:00:00:00:64,192.168.0.100)
+Arp Cache: Adding the pair (00:00:00:00:00:65,192.168.0.101)
+Arp Cache: Adding the pair (00:00:00:00:00:66,192.168.0.102)
+Arp Cache: Adding the pair (00:00:00:00:00:67,192.168.0.103)
+Arp Cache: Adding the pair (00:00:00:00:00:68,192.168.0.104)
+Arp Cache: Adding the pair (00:00:00:00:00:69,192.168.0.105)
+Arp Cache: Adding the pair (00:00:00:00:00:6a,192.168.0.106)
+Arp Cache: Adding the pair (00:00:00:00:00:6b,192.168.0.107)
+Arp Cache: Adding the pair (00:00:00:00:00:6c,192.168.0.108)
+Arp Cache: Adding the pair (00:00:00:00:00:6d,192.168.0.109)
+Arp Cache: Adding the pair (00:00:00:00:00:6e,192.168.0.110)
+Arp Cache: Adding the pair (00:00:00:00:00:6f,192.168.0.111)
+Arp Cache: Adding the pair (00:00:00:00:00:70,192.168.0.112)
+Arp Cache: Adding the pair (00:00:00:00:00:71,192.168.0.113)
+Arp Cache: Adding the pair (00:00:00:00:00:72,192.168.0.114)
+Arp Cache: Adding the pair (00:00:00:00:00:73,192.168.0.115)
+Arp Cache: Adding the pair (00:00:00:00:00:74,192.168.0.116)
+Arp Cache: Adding the pair (00:00:00:00:00:75,192.168.0.117)
+Arp Cache: Adding the pair (00:00:00:00:00:76,192.168.0.118)
+Arp Cache: Adding the pair (00:00:00:00:00:77,192.168.0.119)
+Arp Cache: Adding the pair (00:00:00:00:00:78,192.168.0.120)
+Arp Cache: Adding the pair (00:00:00:00:00:79,192.168.0.121)
+Arp Cache: Adding the pair (00:00:00:00:00:7a,192.168.0.122)
+Arp Cache: Adding the pair (00:00:00:00:00:7b,192.168.0.123)
+Arp Cache: Adding the pair (00:00:00:00:00:7c,192.168.0.124)
+Arp Cache: Adding the pair (00:00:00:00:00:7d,192.168.0.125)
+Arp Cache: Adding the pair (00:00:00:00:00:7e,192.168.0.126)
+Arp Cache: Adding the pair (00:00:00:00:00:7f,192.168.0.127)
+Arp Cache: Adding the pair (00:00:00:00:00:80,192.168.0.128)
+Arp Cache: Adding the pair (00:00:00:00:00:81,192.168.0.129)
+Arp Cache: Adding the pair (00:00:00:00:00:82,192.168.0.130)
+Arp Cache: Adding the pair (00:00:00:00:00:83,192.168.0.131)
+Arp Cache: Adding the pair (00:00:00:00:00:84,192.168.0.132)
+Arp Cache: Adding the pair (00:00:00:00:00:85,192.168.0.133)
+Arp Cache: Adding the pair (00:00:00:00:00:86,192.168.0.134)
+Arp Cache: Adding the pair (00:00:00:00:00:87,192.168.0.135)
+Arp Cache: Adding the pair (00:00:00:00:00:88,192.168.0.136)
+Arp Cache: Adding the pair (00:00:00:00:00:89,192.168.0.137)
+Arp Cache: Adding the pair (00:00:00:00:00:8a,192.168.0.138)
+Arp Cache: Adding the pair (00:00:00:00:00:8b,192.168.0.139)
+Arp Cache: Adding the pair (00:00:00:00:00:8c,192.168.0.140)
+Arp Cache: Adding the pair (00:00:00:00:00:8d,192.168.0.141)
+Arp Cache: Adding the pair (00:00:00:00:00:8e,192.168.0.142)
+Arp Cache: Adding the pair (00:00:00:00:00:8f,192.168.0.143)
+Arp Cache: Adding the pair (00:00:00:00:00:90,192.168.0.144)
+Arp Cache: Adding the pair (00:00:00:00:00:91,192.168.0.145)
+Arp Cache: Adding the pair (00:00:00:00:00:92,192.168.0.146)
+Arp Cache: Adding the pair (00:00:00:00:00:93,192.168.0.147)
+Arp Cache: Adding the pair (00:00:00:00:00:94,192.168.0.148)
+Arp Cache: Adding the pair (00:00:00:00:00:95,192.168.0.149)
+Arp Cache: Adding the pair (00:00:00:00:00:96,192.168.0.150)
+Arp Cache: Adding the pair (00:00:00:00:00:97,192.168.0.151)
+Arp Cache: Adding the pair (00:00:00:00:00:98,192.168.0.152)
+Arp Cache: Adding the pair (00:00:00:00:00:99,192.168.0.153)
+Arp Cache: Adding the pair (00:00:00:00:00:9a,192.168.0.154)
+Arp Cache: Adding the pair (00:00:00:00:00:9b,192.168.0.155)
+Arp Cache: Adding the pair (00:00:00:00:00:9c,192.168.0.156)
+Arp Cache: Adding the pair (00:00:00:00:00:9d,192.168.0.157)
+Arp Cache: Adding the pair (00:00:00:00:00:9e,192.168.0.158)
+Arp Cache: Adding the pair (00:00:00:00:00:9f,192.168.0.159)
+Arp Cache: Adding the pair (00:00:00:00:00:a0,192.168.0.160)
+Arp Cache: Adding the pair (00:00:00:00:00:a1,192.168.0.161)
+Arp Cache: Adding the pair (00:00:00:00:00:a2,192.168.0.162)
+Arp Cache: Adding the pair (00:00:00:00:00:a3,192.168.0.163)
+Arp Cache: Adding the pair (00:00:00:00:00:a4,192.168.0.164)
+Arp Cache: Adding the pair (00:00:00:00:00:a5,192.168.0.165)
+Arp Cache: Adding the pair (00:00:00:00:00:a6,192.168.0.166)
+Arp Cache: Adding the pair (00:00:00:00:00:a7,192.168.0.167)
+Arp Cache: Adding the pair (00:00:00:00:00:a8,192.168.0.168)
+Arp Cache: Adding the pair (00:00:00:00:00:a9,192.168.0.169)
+Arp Cache: Adding the pair (00:00:00:00:00:aa,192.168.0.170)
+Arp Cache: Adding the pair (00:00:00:00:00:ab,192.168.0.171)
+Arp Cache: Adding the pair (00:00:00:00:00:ac,192.168.0.172)
+Arp Cache: Adding the pair (00:00:00:00:00:ad,192.168.0.173)
+Arp Cache: Adding the pair (00:00:00:00:00:ae,192.168.0.174)
+Arp Cache: Adding the pair (00:00:00:00:00:af,192.168.0.175)
+Arp Cache: Adding the pair (00:00:00:00:00:b0,192.168.0.176)
+Arp Cache: Adding the pair (00:00:00:00:00:b1,192.168.0.177)
+Arp Cache: Adding the pair (00:00:00:00:00:b2,192.168.0.178)
+Arp Cache: Adding the pair (00:00:00:00:00:b3,192.168.0.179)
+Arp Cache: Adding the pair (00:00:00:00:00:b4,192.168.0.180)
+Arp Cache: Adding the pair (00:00:00:00:00:b5,192.168.0.181)
+Arp Cache: Adding the pair (00:00:00:00:00:b6,192.168.0.182)
+Arp Cache: Adding the pair (00:00:00:00:00:b7,192.168.0.183)
+Arp Cache: Adding the pair (00:00:00:00:00:b8,192.168.0.184)
+Arp Cache: Adding the pair (00:00:00:00:00:b9,192.168.0.185)
+Arp Cache: Adding the pair (00:00:00:00:00:ba,192.168.0.186)
+Arp Cache: Adding the pair (00:00:00:00:00:bb,192.168.0.187)
+Arp Cache: Adding the pair (00:00:00:00:00:bc,192.168.0.188)
+Arp Cache: Adding the pair (00:00:00:00:00:bd,192.168.0.189)
+Arp Cache: Adding the pair (00:00:00:00:00:be,192.168.0.190)
+Arp Cache: Adding the pair (00:00:00:00:00:bf,192.168.0.191)
+Arp Cache: Adding the pair (00:00:00:00:00:c0,192.168.0.192)
+Arp Cache: Adding the pair (00:00:00:00:00:c1,192.168.0.193)
+Arp Cache: Adding the pair (00:00:00:00:00:c2,192.168.0.194)
+Arp Cache: Adding the pair (00:00:00:00:00:c3,192.168.0.195)
+Arp Cache: Adding the pair (00:00:00:00:00:c4,192.168.0.196)
+Arp Cache: Adding the pair (00:00:00:00:00:c5,192.168.0.197)
+Arp Cache: Adding the pair (00:00:00:00:00:c6,192.168.0.198)
+Arp Cache: Adding the pair (00:00:00:00:00:c7,192.168.0.199)
+Arp Cache: Adding the pair (00:00:00:00:00:c8,192.168.0.200)
+Arp Cache: Adding the pair (00:00:00:00:00:c9,192.168.0.201)
+Arp Cache: Adding the pair (00:00:00:00:00:ca,192.168.0.202)
+Arp Cache: Adding the pair (00:00:00:00:00:cb,192.168.0.203)
+Arp Cache: Adding the pair (00:00:00:00:00:cc,192.168.0.204)
+Arp Cache: Adding the pair (00:00:00:00:00:cd,192.168.0.205)
+Arp Cache: Adding the pair (00:00:00:00:00:ce,192.168.0.206)
+Arp Cache: Adding the pair (00:00:00:00:00:cf,192.168.0.207)
+Arp Cache: Adding the pair (00:00:00:00:00:d0,192.168.0.208)
+Arp Cache: Adding the pair (00:00:00:00:00:d1,192.168.0.209)
+Arp Cache: Adding the pair (00:00:00:00:00:d2,192.168.0.210)
+Arp Cache: Adding the pair (00:00:00:00:00:d3,192.168.0.211)
+Arp Cache: Adding the pair (00:00:00:00:00:d4,192.168.0.212)
+Arp Cache: Adding the pair (00:00:00:00:00:d5,192.168.0.213)
+Arp Cache: Adding the pair (00:00:00:00:00:d6,192.168.0.214)
+Arp Cache: Adding the pair (00:00:00:00:00:d7,192.168.0.215)
+Arp Cache: Adding the pair (00:00:00:00:00:d8,192.168.0.216)
+Arp Cache: Adding the pair (00:00:00:00:00:d9,192.168.0.217)
+Arp Cache: Adding the pair (00:00:00:00:00:da,192.168.0.218)
+Arp Cache: Adding the pair (00:00:00:00:00:db,192.168.0.219)
+Arp Cache: Adding the pair (00:00:00:00:00:dc,192.168.0.220)
+Arp Cache: Adding the pair (00:00:00:00:00:dd,192.168.0.221)
+Arp Cache: Adding the pair (00:00:00:00:00:de,192.168.0.222)
+Arp Cache: Adding the pair (00:00:00:00:00:df,192.168.0.223)
+Arp Cache: Adding the pair (00:00:00:00:00:e0,192.168.0.224)
+Arp Cache: Adding the pair (00:00:00:00:00:e1,192.168.0.225)
+Arp Cache: Adding the pair (00:00:00:00:00:e2,192.168.0.226)
+Arp Cache: Adding the pair (00:00:00:00:00:e3,192.168.0.227)
+Arp Cache: Adding the pair (00:00:00:00:00:e4,192.168.0.228)
+Arp Cache: Adding the pair (00:00:00:00:00:e5,192.168.0.229)
+Arp Cache: Adding the pair (00:00:00:00:00:e6,192.168.0.230)
+Arp Cache: Adding the pair (00:00:00:00:00:e7,192.168.0.231)
+Arp Cache: Adding the pair (00:00:00:00:00:e8,192.168.0.232)
+Arp Cache: Adding the pair (00:00:00:00:00:e9,192.168.0.233)
+Arp Cache: Adding the pair (00:00:00:00:00:ea,192.168.0.234)
+Arp Cache: Adding the pair (00:00:00:00:00:eb,192.168.0.235)
+Arp Cache: Adding the pair (00:00:00:00:00:ec,192.168.0.236)
+Arp Cache: Adding the pair (00:00:00:00:00:ed,192.168.0.237)
+Arp Cache: Adding the pair (00:00:00:00:00:ee,192.168.0.238)
+Arp Cache: Adding the pair (00:00:00:00:00:ef,192.168.0.239)
+Arp Cache: Adding the pair (00:00:00:00:00:f0,192.168.0.240)
+Arp Cache: Adding the pair (00:00:00:00:00:f1,192.168.0.241)
+Arp Cache: Adding the pair (00:00:00:00:00:f2,192.168.0.242)
+Arp Cache: Adding the pair (00:00:00:00:00:f3,192.168.0.243)
+Arp Cache: Adding the pair (00:00:00:00:00:f4,192.168.0.244)
+Arp Cache: Adding the pair (00:00:00:00:00:f5,192.168.0.245)
+Arp Cache: Adding the pair (00:00:00:00:00:f6,192.168.0.246)
+Arp Cache: Adding the pair (00:00:00:00:00:f7,192.168.0.247)
+Arp Cache: Adding the pair (00:00:00:00:00:f8,192.168.0.248)
+Arp Cache: Adding the pair (00:00:00:00:00:f9,192.168.0.249)
+Arp Cache: Adding the pair (00:00:00:00:00:fa,192.168.0.250)
+Arp Cache: Adding the pair (00:00:00:00:00:fb,192.168.0.251)
+Arp Cache: Adding the pair (00:00:00:00:00:fc,192.168.0.252)
+Arp Cache: Adding the pair (00:00:00:00:00:fd,192.168.0.253)
+Arp Cache: Adding the pair (00:00:00:00:00:fe,192.168.0.254)
+Arp Cache: Adding the pair (00:00:00:00:00:ff,192.168.0.255)
+Arp Cache: Adding the pair (00:00:00:00:01:00,192.168.1.0)
+Arp Cache: Adding the pair (00:00:00:00:01:01,192.168.1.1)
+Arp Cache: Adding the pair (00:00:00:00:01:02,192.168.1.2)
+Arp Cache: Adding the pair (00:00:00:00:01:03,192.168.1.3)
+Arp Cache: Adding the pair (00:00:00:00:01:04,192.168.1.4)
+Arp Cache: Adding the pair (00:00:00:00:01:05,192.168.1.5)
+Arp Cache: Adding the pair (00:00:00:00:01:06,192.168.1.6)
+Arp Cache: Adding the pair (00:00:00:00:01:07,192.168.1.7)
+Arp Cache: Adding the pair (00:00:00:00:01:08,192.168.1.8)
+Arp Cache: Adding the pair (00:00:00:00:01:09,192.168.1.9)
+Arp Cache: Adding the pair (00:00:00:00:01:0a,192.168.1.10)
+Arp Cache: Adding the pair (00:00:00:00:01:0b,192.168.1.11)
+Arp Cache: Adding the pair (00:00:00:00:01:0c,192.168.1.12)
+Arp Cache: Adding the pair (00:00:00:00:01:0d,192.168.1.13)
+Arp Cache: Adding the pair (00:00:00:00:01:0e,192.168.1.14)
+Arp Cache: Adding the pair (00:00:00:00:01:0f,192.168.1.15)
+Arp Cache: Adding the pair (00:00:00:00:01:10,192.168.1.16)
+Arp Cache: Adding the pair (00:00:00:00:01:11,192.168.1.17)
+Arp Cache: Adding the pair (00:00:00:00:01:12,192.168.1.18)
+Arp Cache: Adding the pair (00:00:00:00:01:13,192.168.1.19)
+Arp Cache: Adding the pair (00:00:00:00:01:14,192.168.1.20)
+Arp Cache: Adding the pair (00:00:00:00:01:15,192.168.1.21)
+Arp Cache: Adding the pair (00:00:00:00:01:16,192.168.1.22)
+Arp Cache: Adding the pair (00:00:00:00:01:17,192.168.1.23)
+Arp Cache: Adding the pair (00:00:00:00:01:18,192.168.1.24)
+Arp Cache: Adding the pair (00:00:00:00:01:19,192.168.1.25)
+Arp Cache: Adding the pair (00:00:00:00:01:1a,192.168.1.26)
+Arp Cache: Adding the pair (00:00:00:00:01:1b,192.168.1.27)
+Arp Cache: Adding the pair (00:00:00:00:01:1c,192.168.1.28)
+Arp Cache: Adding the pair (00:00:00:00:01:1d,192.168.1.29)
+Arp Cache: Adding the pair (00:00:00:00:01:1e,192.168.1.30)
+Arp Cache: Adding the pair (00:00:00:00:01:1f,192.168.1.31)
+Arp Cache: Adding the pair (00:00:00:00:01:20,192.168.1.32)
+Arp Cache: Adding the pair (00:00:00:00:01:21,192.168.1.33)
+Arp Cache: Adding the pair (00:00:00:00:01:22,192.168.1.34)
+Arp Cache: Adding the pair (00:00:00:00:01:23,192.168.1.35)
+Arp Cache: Adding the pair (00:00:00:00:01:24,192.168.1.36)
+Arp Cache: Adding the pair (00:00:00:00:01:25,192.168.1.37)
+Arp Cache: Adding the pair (00:00:00:00:01:26,192.168.1.38)
+Arp Cache: Adding the pair (00:00:00:00:01:27,192.168.1.39)
+Arp Cache: Adding the pair (00:00:00:00:01:28,192.168.1.40)
+Arp Cache: Adding the pair (00:00:00:00:01:29,192.168.1.41)
+Arp Cache: Adding the pair (00:00:00:00:01:2a,192.168.1.42)
+Arp Cache: Adding the pair (00:00:00:00:01:2b,192.168.1.43)
+Arp Cache: Adding the pair (00:00:00:00:01:2c,192.168.1.44)
+Arp Cache: Adding the pair (00:00:00:00:01:2d,192.168.1.45)
 Configuring trace sinks for nodes...
 Configuring STA Node trace sources...
-Hooking up trace sources for STA 0
-Hooking up trace sources for STA 1
-Hooking up trace sources for STA 2
-Hooking up trace sources for STA 3
-Hooking up trace sources for STA 4
-Hooking up trace sources for STA 5
-Hooking up trace sources for STA 6
-Hooking up trace sources for STA 7
-Hooking up trace sources for STA 8
-Hooking up trace sources for STA 9
-Node 2 is associated and has aid 3
-Node 9 is associated and has aid 10
-Node 1 is associated and has aid 2
-Node 6 is associated and has aid 7
-Node 4 is associated and has aid 5
-POS: x=6.84389, y=0.463477, z=0,1
-Node 3 is associated and has aid 4
-Node 0 is associated and has aid 1
-Node 5 is associated and has aid 6
-POS: x=7.68777, y=0.0730467, z=0,2
+Node 268 is associated and has aid 269
+Node 87 is associated and has aid 88
+Node 225 is associated and has aid 226
+Node 138 is associated and has aid 139
+Node 37 is associated and has aid 38
+Node 156 is associated and has aid 157
+Node 157 is associated and has aid 158
+Node 35 is associated and has aid 36
+Node 207 is associated and has aid 208
+Node 34 is associated and has aid 35
+Node 277 is associated and has aid 278
+Node 149 is associated and has aid 150
+Node 251 is associated and has aid 252
+Node 137 is associated and has aid 138
+Node 22 is associated and has aid 23
+Node 119 is associated and has aid 120
+Node 237 is associated and has aid 238
+Node 160 is associated and has aid 161
+Node 40 is associated and has aid 41
+Node 195 is associated and has aid 196
+Node 126 is associated and has aid 127
+Node 281 is associated and has aid 282
+Node 128 is associated and has aid 129
+Node 175 is associated and has aid 176
+Node 178 is associated and has aid 179
+Node 226 is associated and has aid 227
+Node 286 is associated and has aid 287
+Node 274 is associated and has aid 275
+Node 127 is associated and has aid 128
+Node 159 is associated and has aid 160
+Node 136 is associated and has aid 137
+Node 39 is associated and has aid 40
+Node 238 is associated and has aid 239
+Node 285 is associated and has aid 286
+Node 275 is associated and has aid 276
+Node 245 is associated and has aid 246
+Node 288 is associated and has aid 289
+Node 53 is associated and has aid 54
 Node 8 is associated and has aid 9
+Node 143 is associated and has aid 144
+Node 99 is associated and has aid 100
+Node 230 is associated and has aid 231
+Node 118 is associated and has aid 119
+Node 56 is associated and has aid 57
+Node 80 is associated and has aid 81
+Node 270 is associated and has aid 271
+Node 266 is associated and has aid 267
+Node 147 is associated and has aid 148
+Node 17 is associated and has aid 18
+Node 265 is associated and has aid 266
+Node 139 is associated and has aid 140
+Node 287 is associated and has aid 288
+Node 250 is associated and has aid 251
+Node 141 is associated and has aid 142
+Node 95 is associated and has aid 96
+Node 186 is associated and has aid 187
+Node 109 is associated and has aid 110
+Node 36 is associated and has aid 37
+Node 110 is associated and has aid 111
+Node 83 is associated and has aid 84
+Node 89 is associated and has aid 90
+Node 54 is associated and has aid 55
+Node 93 is associated and has aid 94
+Node 90 is associated and has aid 91
+Node 272 is associated and has aid 273
+Node 49 is associated and has aid 50
+Node 58 is associated and has aid 59
+Node 166 is associated and has aid 167
+Node 108 is associated and has aid 109
+Node 43 is associated and has aid 44
+Node 47 is associated and has aid 48
+Node 297 is associated and has aid 298
+Node 38 is associated and has aid 39
+Node 100 is associated and has aid 101
+Node 228 is associated and has aid 229
+Node 243 is associated and has aid 244
+Node 155 is associated and has aid 156
+Node 227 is associated and has aid 228
+Node 117 is associated and has aid 118
+Node 179 is associated and has aid 180
+Node 21 is associated and has aid 22
+Node 194 is associated and has aid 195
+Node 163 is associated and has aid 164
+Node 6 is associated and has aid 7
+Node 261 is associated and has aid 262
+Node 9 is associated and has aid 10
+Node 193 is associated and has aid 194
+Node 170 is associated and has aid 171
+Node 255 is associated and has aid 256
+Node 97 is associated and has aid 98
+Node 246 is associated and has aid 247
+Node 298 is associated and has aid 299
+Node 254 is associated and has aid 255
+Node 19 is associated and has aid 20
+Node 62 is associated and has aid 63
+Node 76 is associated and has aid 77
+Node 114 is associated and has aid 115
+Node 267 is associated and has aid 268
+Node 260 is associated and has aid 261
+Node 86 is associated and has aid 87
+Node 81 is associated and has aid 82
+Node 233 is associated and has aid 234
+Node 242 is associated and has aid 243
+Node 278 is associated and has aid 279
+Node 135 is associated and has aid 136
+Node 20 is associated and has aid 21
+Node 144 is associated and has aid 145
+Node 67 is associated and has aid 68
+Node 158 is associated and has aid 159
+Node 262 is associated and has aid 263
+Node 213 is associated and has aid 214
+Node 180 is associated and has aid 181
+Node 263 is associated and has aid 264
+Node 188 is associated and has aid 189
+Node 247 is associated and has aid 248
+Node 41 is associated and has aid 42
+Node 75 is associated and has aid 76
+Node 219 is associated and has aid 220
+Node 48 is associated and has aid 49
+Node 217 is associated and has aid 218
+Node 236 is associated and has aid 237
+Node 68 is associated and has aid 69
+Node 284 is associated and has aid 285
+Node 121 is associated and has aid 122
+Node 292 is associated and has aid 293
+Node 26 is associated and has aid 27
+Node 79 is associated and has aid 80
+Node 223 is associated and has aid 224
+Node 273 is associated and has aid 274
+Node 289 is associated and has aid 290
+Node 44 is associated and has aid 45
+Node 283 is associated and has aid 284
+Node 181 is associated and has aid 182
+Node 164 is associated and has aid 165
+Node 200 is associated and has aid 201
+Node 27 is associated and has aid 28
+Node 4 is associated and has aid 5
 Node 7 is associated and has aid 8
-All 10 stations associated at 2018458, configuring clients & server
-856.099
-457.334
-438.42
-52.1734
-226.124
-988.672
-437.988
-544.375
-134.922
-378.22
-POS: x=6.68786, y=0.0861946, z=0,3
-POS: x=5.68794, y=0.0993425, z=0,4
-POS: x=6.61113, y=0.483689, z=0,5
-POS: x=7.53432, y=0.868036, z=0,6
-POS: x=6.69347, y=0.326764, z=0,7
-POS: x=5.85263, y=0.214507, z=0,8
-POS: x=5.19426, y=0.538192, z=0,9
-POS: x=4.5359, y=1.29089, z=0,10
-POS: x=3.72417, y=1.87493, z=0,11
-POS: x=2.91245, y=2.45897, z=0,12
-POS: x=3.44835, y=1.61469, z=0,13
-Total energy: 0.00739222
-Battery lifetime: 3517.21
-Throughput: 6.92291e-310
-Success rate: -nan
+Node 271 is associated and has aid 272
+Node 69 is associated and has aid 70
+Node 98 is associated and has aid 99
+Node 216 is associated and has aid 217
+Node 115 is associated and has aid 116
+Node 249 is associated and has aid 250
+Node 299 is associated and has aid 300
+Node 5 is associated and has aid 6
+Node 64 is associated and has aid 65
+Node 11 is associated and has aid 12
+Node 84 is associated and has aid 85
+Node 192 is associated and has aid 193
+Node 124 is associated and has aid 125
+Node 294 is associated and has aid 295
+Node 282 is associated and has aid 283
+Node 295 is associated and has aid 296
+Node 151 is associated and has aid 152
+Node 241 is associated and has aid 242
+Node 63 is associated and has aid 64
+Node 212 is associated and has aid 213
+Node 23 is associated and has aid 24
+Node 107 is associated and has aid 108
+Node 60 is associated and has aid 61
+Node 232 is associated and has aid 233
+Node 185 is associated and has aid 186
+Node 204 is associated and has aid 205
+Node 206 is associated and has aid 207
+Node 258 is associated and has aid 259
+Node 96 is associated and has aid 97
+Node 248 is associated and has aid 249
+Node 50 is associated and has aid 51
+Node 131 is associated and has aid 132
+Node 140 is associated and has aid 141
+Node 51 is associated and has aid 52
+Node 176 is associated and has aid 177
+Node 73 is associated and has aid 74
+Node 104 is associated and has aid 105
+Node 133 is associated and has aid 134
+Node 291 is associated and has aid 292
+Node 205 is associated and has aid 206
+Node 259 is associated and has aid 260
+Node 65 is associated and has aid 66
+Node 167 is associated and has aid 168
+Node 171 is associated and has aid 172
+Node 172 is associated and has aid 173
+Node 16 is associated and has aid 17
+Node 231 is associated and has aid 232
+Node 209 is associated and has aid 210
+Node 129 is associated and has aid 130
+Node 168 is associated and has aid 169
+Node 88 is associated and has aid 89
+Node 55 is associated and has aid 56
+Node 296 is associated and has aid 297
+Node 82 is associated and has aid 83
+Node 214 is associated and has aid 215
+Node 28 is associated and has aid 29
+Node 199 is associated and has aid 200
+Node 182 is associated and has aid 183
+Node 18 is associated and has aid 19
+Node 46 is associated and has aid 47
+Node 32 is associated and has aid 33
+Node 229 is associated and has aid 230
+Node 190 is associated and has aid 191
+Node 235 is associated and has aid 236
+Node 174 is associated and has aid 175
+Node 279 is associated and has aid 280
+Node 162 is associated and has aid 163
+Node 113 is associated and has aid 114
+Node 211 is associated and has aid 212
+Node 239 is associated and has aid 240
+Node 208 is associated and has aid 209
+Node 187 is associated and has aid 188
+Node 244 is associated and has aid 245
+Node 191 is associated and has aid 192
+Node 196 is associated and has aid 197
+Node 72 is associated and has aid 73
+Node 3 is associated and has aid 4
+Node 122 is associated and has aid 123
+Node 70 is associated and has aid 71
+Node 12 is associated and has aid 13
+Node 183 is associated and has aid 184
+Node 177 is associated and has aid 178
+Node 106 is associated and has aid 107
+Node 165 is associated and has aid 166
+Node 92 is associated and has aid 93
+Node 201 is associated and has aid 202
+Node 189 is associated and has aid 190
+Node 220 is associated and has aid 221
+Node 25 is associated and has aid 26
+Node 218 is associated and has aid 219
+Node 197 is associated and has aid 198
+Node 152 is associated and has aid 153
+Node 10 is associated and has aid 11
+Node 154 is associated and has aid 155
+Node 202 is associated and has aid 203
+Node 111 is associated and has aid 112
+Node 85 is associated and has aid 86
+Node 169 is associated and has aid 170
+Node 77 is associated and has aid 78
+Node 57 is associated and has aid 58
+Node 52 is associated and has aid 53
+Node 116 is associated and has aid 117
+Node 15 is associated and has aid 16
+Node 101 is associated and has aid 102
+Node 150 is associated and has aid 151
+Node 253 is associated and has aid 254
+Node 61 is associated and has aid 62
+Node 105 is associated and has aid 106
+Node 224 is associated and has aid 225
+Node 13 is associated and has aid 14
+Node 222 is associated and has aid 223
+Node 234 is associated and has aid 235
+Node 123 is associated and has aid 124
+Node 0 is associated and has aid 1
+Node 29 is associated and has aid 30
+Node 161 is associated and has aid 162
+Node 1 is associated and has aid 2
+Node 102 is associated and has aid 103
+Node 145 is associated and has aid 146
+Node 120 is associated and has aid 121
+Node 210 is associated and has aid 211
+Node 91 is associated and has aid 92
+Node 45 is associated and has aid 46
+Node 293 is associated and has aid 294
+Node 280 is associated and has aid 281
+Node 257 is associated and has aid 258
+Node 142 is associated and has aid 143
+Node 24 is associated and has aid 25
+Node 215 is associated and has aid 216
+Node 112 is associated and has aid 113
+Node 148 is associated and has aid 149
+Node 184 is associated and has aid 185
+Node 42 is associated and has aid 43
+Node 134 is associated and has aid 135
+Node 153 is associated and has aid 154
+Node 203 is associated and has aid 204
+Node 31 is associated and has aid 32
+Node 240 is associated and has aid 241
+Node 59 is associated and has aid 60
+Node 30 is associated and has aid 31
+Node 198 is associated and has aid 199
+Node 66 is associated and has aid 67
+Node 125 is associated and has aid 126
+Node 252 is associated and has aid 253
+Node 2 is associated and has aid 3
+Node 269 is associated and has aid 270
+Node 276 is associated and has aid 277
+Node 146 is associated and has aid 147
+Node 221 is associated and has aid 222
+Node 290 is associated and has aid 291
+Node 14 is associated and has aid 15
+Node 173 is associated and has aid 174
+Node 130 is associated and has aid 131
+Node 256 is associated and has aid 257
+Node 264 is associated and has aid 265
+Node 33 is associated and has aid 34
+Node 103 is associated and has aid 104
+Node 74 is associated and has aid 75
+Node 132 is associated and has aid 133
+Node 94 is associated and has aid 95
+Node 71 is associated and has aid 72
+Total energy: 0
+Battery lifetime: inf
+Throughput: 6.90951e-310
+Success rate: 0

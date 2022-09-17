@@ -1548,83 +1548,62 @@ int main(int argc, char *argv[]) {
 		PrintPositions (wifiStaNode);
 	}
 	else {
-		mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (config.rho),
-                                 "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
-		mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-		mobility.Install(wifiStaNode);
-	}
-	
-   /*
-	MobilityHelper mobilityAp;
-	Ptr<ListPositionAllocator> positionAlloc = CreateObject<
-			ListPositionAllocator>();
-	positionAlloc->Add(Vector(xpos, ypos, 0.0));
-	mobilityAp.SetPositionAllocator(positionAlloc);
-	mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-	mobilityAp.Install(wifiApNode); */
-    
-    MobilityHelper mobilityAp;
-    Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
-    positionAlloc->Add (Vector (0, 0, 50));
-    mobilityAp.SetPositionAllocator (positionAlloc);
-    mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-    mobilityAp.Install(wifiApNode);
+		if (config.radioEnvironment == "indoor") {
+			double x_min = 0.0;
+			double x_max = 20.0;
+			double y_min = 0.0;
+			double y_max = 10.0;
+			double z_min = 0.0;
+			double z_max = 50.0;
 
-	if (config.radioEnvironment == "indoor") {
-      double x_min = 0.0;
-      double x_max = 10.0;
-      double y_min = 0.0;
-      double y_max = 20.0;
-      double z_min = 0.0;
-      double z_max = 10.0;
-      Ptr<Building> b = CreateObject <Building> ();
-      b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
-      b->SetBuildingType (Building::Residential);
-      b->SetExtWallsType (Building::ConcreteWithWindows);
-      b->SetNFloors (3);
-      b->SetNRoomsX (3);
-      b->SetNRoomsY (2);
+			double _x_max = x_max / config.nGW;
+			double _y_max = y_max / config.nGW;
+			double _z_max = z_max / config.nGW;
 
-      BuildingsHelper::Install (wifiStaNode);
-      
-      BuildingsHelper::Install (wifiApNode);
-    }
+			std::string m_x = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_x_max)+"]";
+			std::string m_y = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_y_max)+"]";
+			std::string m_z = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_z_max)+"]";
 
-	/*
+			mobility.SetPositionAllocator ("ns3::RandomBoxPositionAllocator", "X", StringValue (m_x),
+											"Y", StringValue (m_y), "Z", StringValue (m_z));
+			mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+			mobility.Install(wifiStaNode);
 
-	 MobilityHelper mobilityApCamera;
-	 Ptr<ListPositionAllocator> positionAllocAp = CreateObject<ListPositionAllocator> ();
-	 positionAllocAp->Add (Vector (xpos, ypos, 0.0));
-	 mobilityApCamera.SetPositionAllocator (positionAllocAp);
-	 mobilityApCamera.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-	 mobilityApCamera.Install (wifiApNode);
+			MobilityHelper mobilityAp;
+			Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+			positionAlloc->Add (Vector (_x_max/2, _y_max/2, _z_max/2));
+			mobilityAp.SetPositionAllocator (positionAlloc);
+			mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+			mobilityAp.Install(wifiApNode);
 
-	 float deltaAngle = 2* M_PI / (config.tcpipcameraEnd - config.tcpipcameraStart +1);
-	 float angle = 0.0;
-	 double x = 0.0;
-	 double y = 0.0;
+			//std::cout << z_max << std::endl;
+			//double z_max = 50.0;
+			Ptr<Building> b = CreateObject <Building> ();
+			b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
+			b->SetBuildingType (Building::Residential);
+			b->SetExtWallsType (Building::ConcreteWithWindows);
+			b->SetNFloors (16);
+			b->SetNRoomsX (3);
+			b->SetNRoomsY (2);
 
-	 double Distance = 50.0;
+			BuildingsHelper::Install (wifiStaNode);
+			
+			BuildingsHelper::Install (wifiApNode);
+			}
+		else {
+			mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (config.rho),
+											"X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
+			mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+			mobility.Install(wifiStaNode);
 
-
-	 Ptr<UniformRandomVariable> m_rv = CreateObject<UniformRandomVariable> ();
-
-
-	 for (int i = config.tcpipcameraStart; i <= config.tcpipcameraEnd; i++)
-	 {
-	 x = cos(angle) * Distance + xpos;
-	 y = sin(angle) * Distance + ypos;
-
-	 MobilityHelper mobilityCamera;
-	 Ptr<ListPositionAllocator> positionAllocSta = CreateObject<ListPositionAllocator> ();
-	 positionAllocSta->Add(Vector(x, y, 0.0));
-	 mobilityCamera.SetPositionAllocator(positionAllocSta);
-	 mobilityCamera.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-	 mobilityCamera.Install(wifiStaNode.Get(i));
-	 angle += deltaAngle;
-	 }
-
-	 */
+			MobilityHelper mobilityAp;
+			Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+			positionAlloc->Add (Vector (0, 0, 1));
+			mobilityAp.SetPositionAllocator (positionAlloc);
+			mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+			mobilityAp.Install(wifiApNode);
+		}
+  	}
 
 	/* Internet stack*/
 	InternetStackHelper stack;
@@ -1819,7 +1798,7 @@ int main(int argc, char *argv[]) {
     int i = 0;
     string spazio = ",";
     double capacityJoules = config.batteryCapacity * config.voltage * 3.6;
-	double energyConsumed;
+	double max_energy = 0;
 
     while (i < config.Nsta) {
         
@@ -1833,15 +1812,17 @@ int main(int argc, char *argv[]) {
          cout << "Rx+Idle ENERGY " <<  stats.get(i).EnergyRxIdle << " mW" << endl;
          cout << "Tx ENERGY " <<  stats.get(i).EnergyTx << " mW" << endl;
 		*/
-		energyConsumed =  stats.get(i).GetTotalEnergyConsumption() / 1000;
-        std::cout << "Total energy: " << energyConsumed << std::endl;
-		std::cout << "Battery lifetime: " << ((capacityJoules / energyConsumed) * config.simulationTime) / 86400 << std::endl;
-		std::cout << "Throughput: " << throughput << std::endl;
-		std::cout << "Success rate: " <<  wholeSuccessRate << std::endl; // Success rate percentage
+		double energyConsumed =  stats.get(i).GetTotalEnergyConsumption() / 1000;
+      	max_energy = std::max(energyConsumed, max_energy);
 		//std::cout << "simulation time: " << config.simulationTime << " " << config.payloadSize << std::endl;
         i++;
 		break;
     }
+
+	std::cout << "Total energy: " << max_energy << std::endl;
+	std::cout << "Battery lifetime: " << ((capacityJoules / max_energy) * config.simulationTime) / 86400 << std::endl;
+	std::cout << "Throughput: " << throughput << std::endl;
+	std::cout << "Success rate: " <<  wholeSuccessRate << std::endl; // Success rate percentage
     
     risultati.close();
 	return 0;

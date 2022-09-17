@@ -142,7 +142,7 @@ Cost231PropagationLossModel::GetSSAntennaHeight (void) const
 double
 Cost231PropagationLossModel::GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const
 {
-
+  //std::cout << "Frequency: cost " << m_frequency << std::endl;
   double distance = a->GetDistanceFrom (b);
   if (distance <= m_minDistance)
     {

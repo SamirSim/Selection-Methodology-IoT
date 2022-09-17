@@ -44,7 +44,8 @@ OkumuraHataPropagationLossModel::GetTypeId (void)
     .AddAttribute ("Frequency",
                    "The propagation frequency in Hz",
                    DoubleValue (861e6),
-                   MakeDoubleAccessor (&OkumuraHataPropagationLossModel::m_frequency),
+                   MakeDoubleAccessor (&OkumuraHataPropagationLossModel::SetFrequency,
+                                       &OkumuraHataPropagationLossModel::GetFrequency),
                    MakeDoubleChecker<double> ())
     .AddAttribute ("Environment",
                    "Environment Scenario",
@@ -72,9 +73,22 @@ OkumuraHataPropagationLossModel::~OkumuraHataPropagationLossModel ()
 {
 }
 
+void
+OkumuraHataPropagationLossModel::SetFrequency (double frequency)
+{
+  m_frequency = frequency;
+}
+
+double
+OkumuraHataPropagationLossModel::GetFrequency (void) const
+{
+  return m_frequency;
+}
+
 double
 OkumuraHataPropagationLossModel::GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const
 {
+  std::cout << "Frequency: " << m_frequency << std::endl;
   double loss = 0.0;
   double fmhz = m_frequency / 1e6;
   double dist = a->GetDistanceFrom (b) / 1000.0; 

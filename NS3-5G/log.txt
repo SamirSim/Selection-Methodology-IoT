@@ -1,0 +1,41 @@
++0.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 26 Time: +0.1s
++0.100814735s 2 PacketSink:HandleRead(): At time +0.100815s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 500 bytes
++1.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 35 Time: +1.1s
++1.100689735s 2 PacketSink:HandleRead(): At time +1.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 1000 bytes
++2.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 44 Time: +2.1s
++2.100689735s 2 PacketSink:HandleRead(): At time +2.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 1500 bytes
++3.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 53 Time: +3.1s
++3.100689735s 2 PacketSink:HandleRead(): At time +3.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 2000 bytes
++4.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 62 Time: +4.1s
++4.100689735s 2 PacketSink:HandleRead(): At time +4.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 2500 bytes
++5.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 71 Time: +5.1s
++5.100689735s 2 PacketSink:HandleRead(): At time +5.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 3000 bytes
++6.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 80 Time: +6.1s
++6.100689735s 2 PacketSink:HandleRead(): At time +6.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 3500 bytes
++7.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 89 Time: +7.1s
++7.100689735s 2 PacketSink:HandleRead(): At time +7.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 4000 bytes
++8.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 98 Time: +8.1s
++8.100689735s 2 PacketSink:HandleRead(): At time +8.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 4500 bytes
++9.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 107 Time: +9.1s
++9.100689735s 2 PacketSink:HandleRead(): At time +9.10069s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 5000 bytes
++10.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 116 Time: +10.1s
++10.100689735s 2 PacketSink:HandleRead(): At time +10.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 5500 bytes
++11.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 125 Time: +11.1s
++11.100689735s 2 PacketSink:HandleRead(): At time +11.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 6000 bytes
++12.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 134 Time: +12.1s
++12.100689735s 2 PacketSink:HandleRead(): At time +12.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 6500 bytes
++13.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 143 Time: +13.1s
++13.100689735s 2 PacketSink:HandleRead(): At time +13.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 7000 bytes
++14.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 152 Time: +14.1s
++14.100689735s 2 PacketSink:HandleRead(): At time +14.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 7500 bytes
++15.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 161 Time: +15.1s
++15.100689735s 2 PacketSink:HandleRead(): At time +15.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 8000 bytes
++16.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 170 Time: +16.1s
++16.100689735s 2 PacketSink:HandleRead(): At time +16.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 8500 bytes
++17.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 179 Time: +17.1s
++17.100689735s 2 PacketSink:HandleRead(): At time +17.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 9000 bytes
++18.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 188 Time: +18.1s
++18.100689735s 2 PacketSink:HandleRead(): At time +18.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 9500 bytes
++19.100000000s 4 UdpClient:Send(): TraceDelay TX 500 bytes to 1.0.0.2 Uid: 197 Time: +19.1s
++19.100689735s 2 PacketSink:HandleRead(): At time +19.1007s packet sink received 500 bytes from 7.0.0.2 port 49153 total Rx 10000 bytes
+End of simulation (20s) Total energy consumed by radio (Station) = 3.81764J

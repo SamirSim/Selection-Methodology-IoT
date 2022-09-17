@@ -55,13 +55,13 @@ int
 main (int argc, char *argv[]) {
   /*/ Defining input parameters /*/
   double simulationTime = 100;
-  int nSta = 400;
+  int nSta = 50;
   int nGateways = 1;
   double SF=0; // If SF=0, then the SF is set automatically
   uint8_t codingRate=1;
   int crc = 0;
-  double payloadSize = 10;
-  int period = 60; //One packet per hour
+  double payloadSize = 100;
+  int period = 120; //One packet per hour
   double distance = 500;
   std::string trafficType = "Unconfirmed";
   double voltage = 3;
@@ -292,9 +292,9 @@ main (int argc, char *argv[]) {
     basicSourceHelper.Set ("BasicEnergySupplyVoltageV", DoubleValue (voltage));
 
     radioEnergyHelper.Set ("StandbyCurrentA", DoubleValue (0.0014)); // Idle mode
-    radioEnergyHelper.Set ("TxCurrentA", DoubleValue (0.028));
+    radioEnergyHelper.Set ("TxCurrentA", DoubleValue (0.077));
     radioEnergyHelper.Set ("SleepCurrentA", DoubleValue (0.0000015));
-    radioEnergyHelper.Set ("RxCurrentA", DoubleValue (0.0112));
+    radioEnergyHelper.Set ("RxCurrentA", DoubleValue (0.028));
 
     //radioEnergyHelper.SetTxCurrentModel ("ns3::ConstantLoraTxCurrentModel",
       //                                  "TxCurrent", DoubleValue (0.028));

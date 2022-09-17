@@ -248,8 +248,10 @@ LrWpanHelper::AssociateToPan (NetDeviceContainer c, uint16_t panId, uint8_t max_
   } else if (radioEnvironment == "rural") {
     Ptr<OkumuraHataPropagationLossModel> propModel = CreateObject<OkumuraHataPropagationLossModel> ();
     m_channel->AddPropagationLossModel (propModel);
+    //m_channel->SetAttribute("Frequency", DoubleValue(2.4));
   } else if (radioEnvironment == "indoor") {
     Ptr<HybridBuildingsPropagationLossModel> propModel = CreateObject<HybridBuildingsPropagationLossModel> ();
+    propModel->SetFrequency(2400e6);
     m_channel->AddPropagationLossModel (propModel);
   }
 

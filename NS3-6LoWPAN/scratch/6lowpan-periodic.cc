@@ -47,11 +47,11 @@ int main (int argc, char** argv)
   bool disablePcap = true;
   bool disableAsciiTrace = false;
 
-  double nSta = 3; // 1 PAN Node + 1 Probing node + (nDevices-2) communication nodes
-  double nGW = 1; // 1 PAN Node + 1 Probing node + (nDevices-2) communication nodes
-  double simulationTime = 36000;
-  double distance = 20;
-  double period = 3600;
+  double nSta = 20; // 1 PAN Node + 1 Probing node + (nDevices-2) communication nodes
+  double nGW = 4; // 1 PAN Node + 1 Probing node + (nDevices-2) communication nodes
+  double simulationTime = 100;
+  double distance = 50;
+  double period = 1;
   uint32_t packetSize = 20; //Bytes
   std::string trafficDirection = "upstream";
   double voltage = 3;
@@ -62,7 +62,7 @@ int main (int argc, char** argv)
   uint8_t maxFrameRetries = 5;
   // Topology file name
   std::string topologyFile = "topology.csv";
-  std::string radioEnvironment = "rural";
+  std::string radioEnvironment = "indoor";
 
   bool latency = true;
 
@@ -98,7 +98,7 @@ int main (int argc, char** argv)
       LogComponentEnableAll (LOG_PREFIX_NODE);
       LogComponentEnableAll (LOG_PREFIX_TIME);
     }
-  nSta = nSta + 2; // Add GW and probing node
+  //nSta = nSta + 2; // Add GW and probing node
   nSta = (int) (nSta / nGW);
   nSta = nSta + 2;
   distance = distance / nGW;
@@ -111,62 +111,72 @@ int main (int argc, char** argv)
   MobilityHelper mobility;  
 
   // Setting stations' positions
-  /*
-  Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
-  positionAlloc->Add (Vector (0.0, 0.0, 0.0));
-
-    for (uint32_t i = 0; i < nSta; i++) {
-        positionAlloc->Add (Vector (distance, 0.0, 0.0));
-    }
-
-    mobility.SetPositionAllocator (positionAlloc);
-    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    mobility.Install (nodes);
-  */
-
-  mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
-                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
-    mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-    for (uint32_t i = 2; i < nSta; i++) {
-        mobility.Install(nodes.Get(i));
-    }
-    
-
-    MobilityHelper mobilityAp;
-    Ptr<ListPositionAllocator> positionAllocGW = CreateObject<ListPositionAllocator> ();
-    positionAllocGW->Add (Vector (0, 0, 1));
-    mobilityAp.SetPositionAllocator (positionAllocGW);
-    mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
-    mobilityAp.Install(nodes.Get(0));
-
-    if (radioEnvironment == "indoor") {
+  if (radioEnvironment == "indoor") {
       double x_min = 0.0;
-      double x_max = 10.0;
+      double x_max = 20.0;
       double y_min = 0.0;
-      double y_max = 20.0;
+      double y_max = 10.0;
       double z_min = 0.0;
-      double z_max = 10.0;
+      double z_max = 50.0;
+
+      double _x_max = x_max / nGW;
+      double _y_max = y_max / nGW;
+      double _z_max = z_max / nGW;
+
+      std::string m_x = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_x_max)+"]";
+      std::string m_y = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_y_max)+"]";
+      std::string m_z = "ns3::UniformRandomVariable[Min=0.0|Max="+std::to_string(_z_max)+"]";
+
+      mobility.SetPositionAllocator ("ns3::RandomBoxPositionAllocator", "X", StringValue (m_x),
+                                    "Y", StringValue (m_y), "Z", StringValue (m_z));
+      mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+      mobility.Install(nodes);
+
+      MobilityHelper mobilityAp;
+      Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+      positionAlloc->Add (Vector (_x_max/2, _y_max/2, _z_max/2));
+      mobilityAp.SetPositionAllocator (positionAlloc);
+      mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+      mobilityAp.Install(nodes.Get(1));
+
+      //std::cout << z_max << std::endl;
+      //double z_max = 50.0;
       Ptr<Building> b = CreateObject <Building> ();
       b->SetBoundaries (Box (x_min, x_max, y_min, y_max, z_min, z_max));
       b->SetBuildingType (Building::Residential);
       b->SetExtWallsType (Building::ConcreteWithWindows);
-      b->SetNFloors (3);
+      b->SetNFloors (16);
       b->SetNRoomsX (3);
       b->SetNRoomsY (2);
 
-      for (uint32_t i = 2; i < nSta; i++) {
-        BuildingsHelper::Install (nodes.Get(i));
-      }
-      
-      BuildingsHelper::Install (nodes.Get(0));
+      BuildingsHelper::Install (nodes);
+    
+      if (latency) {
+        positionAlloc->Add (Vector (x_max/2 + 1, y_max/2, z_max/2));
+        mobility.SetPositionAllocator (positionAlloc);
+        mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+        mobility.Install (nodes.Get(2));
     }
-
-    if (latency) {
-      positionAllocGW->Add (Vector (distance, 0, 1));
-      mobility.SetPositionAllocator (positionAllocGW);
+    }
+    else {
+      mobility.SetPositionAllocator ("ns3::UniformDiscPositionAllocator", "rho", DoubleValue (distance),
+                                  "X", DoubleValue (0.0), "Y", DoubleValue (0.0), "Z", DoubleValue(1.0));
       mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-      mobility.Install (nodes.Get(1));
-      if (radioEnvironment == "indoor") BuildingsHelper::Install (nodes.Get(1));
+      mobility.Install(nodes);
+
+      MobilityHelper mobilityAp;
+      Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+      positionAlloc->Add (Vector (0, 0, 1));
+      mobilityAp.SetPositionAllocator (positionAlloc);
+      mobilityAp.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+      mobilityAp.Install(nodes.Get(1));
+
+      if (latency) {
+        positionAlloc->Add (Vector (distance, 0, 1));
+        mobility.SetPositionAllocator (positionAlloc);
+        mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+        mobility.Install (nodes.Get(2));
+    }
     }
 
   /*
@@ -265,22 +275,22 @@ int main (int argc, char** argv)
 
   uint16_t port = 20, echoPort = 10; // well-known echo port number
   
-    UdpEchoServerHelper echoServer(echoPort); // Port # 10
-    ApplicationContainer echoServerApps = echoServer.Install(nodes.Get(0));
-    echoServerApps.Start(Seconds(0.0));
-    echoServerApps.Stop(Seconds(simulationTime+1));
+  UdpEchoServerHelper echoServer(echoPort); // Port # 10
+  ApplicationContainer echoServerApps = echoServer.Install(nodes.Get(0));
+  echoServerApps.Start(Seconds(0.0));
+  echoServerApps.Stop(Seconds(simulationTime+1));
 
-    // UDP Echo Client application to be installed in the probing station
-    Address serverAddress = Address(interfaces.GetAddress (0, 1));
-    UdpEchoClientHelper echoClient1(serverAddress, echoPort);
+  // UDP Echo Client application to be installed in the probing station
+  Address serverAddress = Address(interfaces.GetAddress (0, 1));
+  UdpEchoClientHelper echoClient1(serverAddress, echoPort);
     
-    echoClient1.SetAttribute("MaxPackets", UintegerValue(maxPacketCount));
-    echoClient1.SetAttribute("Interval", TimeValue(echoInterPacketInterval));
-    echoClient1.SetAttribute("PacketSize", UintegerValue(packetSizeEcho));
+  echoClient1.SetAttribute("MaxPackets", UintegerValue(maxPacketCount));
+  echoClient1.SetAttribute("Interval", TimeValue(echoInterPacketInterval));
+  echoClient1.SetAttribute("PacketSize", UintegerValue(packetSizeEcho));
 
-    ApplicationContainer clientApps1 = echoClient1.Install(nodes.Get(1));
-    clientApps1.Start(Seconds(0.0));
-    clientApps1.Stop(Seconds(simulationTime+1));
+  ApplicationContainer clientApps1 = echoClient1.Install(nodes.Get(1));
+  clientApps1.Start(Seconds(0.0));
+  clientApps1.Stop(Seconds(simulationTime+1));
   
   double min = 1.0;
   double max = 0.5;
@@ -348,17 +358,17 @@ int main (int argc, char** argv)
   
   Simulator::Run ();
 
-  double energy = 0;
+  double max_energy = 0, max_battery_lifetime = 999999;
   for (DeviceEnergyModelContainer::Iterator iter = deviceModels.Begin (); iter != deviceModels.End (); iter ++) {
-    double energyConsumed = (*iter)->GetTotalEnergyConsumption ();
-    NS_LOG_UNCOND ("End of simulation (" << Simulator::Now ().GetSeconds ()
-                  << "s) Total energy consumed by radio (Station) = " << energyConsumed << "J");
-    std::cout << "Total energy consumed by radio (Station): " 
-                << energyConsumed << std::endl;
-    energy = energyConsumed;
-    std::cout << "Battery lifetime: " << ((capacityJoules / energyConsumed) * simulationTime) / 86400 << std::endl;
-    break;
+    double energyConsumed = (*iter)->GetTotalEnergyConsumption (); 
+    max_energy = std::max(energyConsumed, max_energy);
+    double battery_lifetime = ((capacityJoules / energyConsumed) * simulationTime);
+
+    battery_lifetime = battery_lifetime / 86400; // Days
+    max_battery_lifetime = std::min(battery_lifetime, max_battery_lifetime);
   }
+  std::cout << "Total energy consumed by radio (Station): " << max_energy << std::endl;
+  std::cout << "Battery lifetime: " << ((capacityJoules / max_energy) * simulationTime) / 86400 << std::endl;
 
   double totalPacketsThrough, throughput;
   for (uint32_t index = 0; index < serverApps.GetN (); ++index) {

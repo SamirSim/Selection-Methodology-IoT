@@ -63,6 +63,18 @@ public:
    */
   double GetLoss (Ptr<MobilityModel> a, Ptr<MobilityModel> b) const;
 
+  void SetFrequency (double frequency);
+  /**
+   * \param systemLoss (dimension-less)
+   *
+   * Set the system loss used by the Friis propagation model.
+   */
+
+  double GetFrequency (void) const;
+  /**
+   * \returns the current system loss (dimension-less)
+   */
+
 private:
   /**
    * \brief Copy constructor
